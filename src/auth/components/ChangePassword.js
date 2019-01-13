@@ -22,7 +22,6 @@ class ChangePassword extends Component {
   changePassword = event => {
     event.preventDefault()
 
-    const { oldPassword, newPassword } = this.state
     const { flash, history, user } = this.props
 
     changePassword(this.state, user)
