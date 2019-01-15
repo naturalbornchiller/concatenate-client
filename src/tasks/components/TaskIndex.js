@@ -25,9 +25,9 @@ export default class TaskIndex extends Component {
     return (
       <div>
         <ul className="task-nav">
-          { this.state.tasks && this.state.tasks.map((task, i) => (
-            <Task className="task-link" key={i} index={i} name={task.name} chains={task.chains} />
-          )) }
+          { this.state.tasks && this.state.tasks.map((task, i) => {
+            return <Task key={i} id={task._id} name={task.name} chains={task.chains} />
+          }) }
         </ul>
       </div>
     )

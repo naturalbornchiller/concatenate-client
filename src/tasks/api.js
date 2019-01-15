@@ -5,7 +5,7 @@ export const taskIndex = user => (
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization':`Token token=${user.token}`
+      'Authorization':`Bearer ${user.token}`
     }
   })
 )
