@@ -1,0 +1,26 @@
+.task-nav {
+  width: 130px;
+  position: fixed;
+  z-index: 1;
+  top: 128px;
+  left: 10px;
+  background: #eee;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 22%;
+  padding: 1px;
+
+  .task-link {
+    cursor: pointer;
+    padding: 6px 8px 6px 16px;
+    font-family: "Lato", sans-serif;
+    text-decoration: none;
+    font-size: 25px;
+    color: #2196F3;
+    display: block;
+
+    &:hover {
+      color: #064579;
+    }
+  }
+}

@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Task from './Task'
+import '../Task.scss'
 import { withRouter } from 'react-router-dom'
 import { taskIndex } from '../api'
 
@@ -22,9 +24,11 @@ export default class TaskIndex extends Component {
   render() {
     return (
       <div>
-        {/* shows state at top of div */}
-        <pre>{ JSON.stringify(this.state, null, 2) }</pre>
-        <p>HelloThere</p>
+        <ul className="task-nav">
+          { this.state.tasks && this.state.tasks.map((task, i) => (
+            <Task className="task-link" key={i} index={i} name={task.name} chains={task.chains} />
+          )) }
+        </ul>
       </div>
     )
   }
