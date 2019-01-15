@@ -9,3 +9,18 @@ export const taskIndex = user => (
     }
   })
 )
+
+export const taskPost = ({ user, name }) => (
+  fetch(`${apiUrl}/tasks`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization':`Bearer ${user.token}`,
+      'data': {
+        'task': {
+          name
+        }
+      }
+    }
+  })
+)

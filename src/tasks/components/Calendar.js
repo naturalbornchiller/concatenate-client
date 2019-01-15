@@ -1,11 +1,8 @@
 import '../Calendar.scss'
-
 import React from 'react'
-
-// Import the calendarheatmap
 import CalendarHeatmap from 'react-calendar-heatmap'
 
-export default class App extends React.Component {
+export default class Calendar extends React.Component {
 
   constructor(props, context) {
     super(props, context)

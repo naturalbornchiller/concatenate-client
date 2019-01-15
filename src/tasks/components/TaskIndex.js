@@ -23,8 +23,13 @@ export default class TaskIndex extends Component {
 
   render() {
     return (
-      <div>
-        <ul className="task-nav">
+      <div className="task-nav">
+        <h2>Tasks</h2>
+        <form id="create-task">
+          <input type="text" placeholder="Add a task!" required />
+          <input type="submit" value="+" />
+        </form>
+        <ul>
           { this.state.tasks && this.state.tasks.map((task, i) => {
             return <Task key={i} id={task._id} name={task.name} chains={task.chains} />
           }) }

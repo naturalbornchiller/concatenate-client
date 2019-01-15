@@ -1,5 +1,5 @@
 .task-nav {
-  width: 130px;
+  width: 226px;
   position: fixed;
   z-index: 1;
   top: 128px;
@@ -7,8 +7,8 @@
   background: #eee;
   overflow-x: hidden;
   overflow-y: auto;
-  height: 22%;
-  padding: 1px;
+  max-height: 81%;
+  padding: 12px;
 
   .task-link {
     cursor: pointer;
