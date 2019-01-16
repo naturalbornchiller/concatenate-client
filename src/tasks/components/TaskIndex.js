@@ -31,7 +31,7 @@ export default class TaskIndex extends Component {
         <div className="task-nav">
           <h2>Tasks</h2>
           <TaskPost user={ this.props.user }  getAllTasks={ this.getAllTasks } />
-          <ul>
+          <ul className="task-link-container">
             { this.state.tasks.map((task, i) => (
               <Link key={ i } to={`/tasks/${task._id}`}>
                 <li id={task._id} className="task-link">{task.name}</li>

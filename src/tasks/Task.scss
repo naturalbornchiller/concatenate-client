@@ -2,12 +2,9 @@
   width: 226px;
   position: fixed;
   z-index: 1;
-  top: 128px;
+  top: 116px;
   left: 10px;
   background: #eee;
-  overflow-x: hidden;
-  overflow-y: auto;
-  max-height: 81%;
   padding: 12px;
 
   .task-name-input {
@@ -21,6 +18,13 @@
     cursor: pointer;
     border: 1px solid rgba(0,0,0, .2);
     border-radius: 7px;
+  }
+
+  .task-link-container {
+    background: rgb(144, 214, 165);
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 580px;
   }
 
   .task-link {
