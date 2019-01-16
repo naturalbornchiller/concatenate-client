@@ -16,8 +16,7 @@ export default class TaskPost extends Component {
 
   onCreateTask = event => {
     taskPost(this.props.user, { task: { name: this.state.name } })
-      .then(console.log)
-      .then(({ data }) => this.props.addNewTask(data))
+      .then(this.props.getAllTasks)
       .then(() => console.log('created a task!!'))
       .catch(() => console.error('error on createTask!'))
   }

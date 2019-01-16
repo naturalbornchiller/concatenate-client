@@ -9,6 +9,7 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import TaskIndex from './tasks/components/TaskIndex'
+import Task from './tasks/components/Task'
 
 class App extends Component {
   constructor () {
@@ -55,8 +56,8 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword flash={this.flash} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/tasks' render={() => (
-            <TaskIndex user={user} />
+          <AuthenticatedRoute user={ user } path='/tasks' render={() => (
+            <TaskIndex user={ user } />
           )} />
         </main>
       </React.Fragment>
