@@ -1,26 +1,18 @@
 const apiUrl = 'http://localhost:4741'
+import axios from 'axios'
 
 export const taskIndex = user => (
-  fetch(`${apiUrl}/tasks`, {
-    method: 'GET',
+  axios.get(`${apiUrl}/tasks`, {
     headers: {
-      'Content-Type': 'application/json',
       'Authorization':`Bearer ${user.token}`
     }
   })
 )
 
-export const taskPost = ({ user, name }) => (
-  fetch(`${apiUrl}/tasks`, {
-    method: 'POST',
+export const taskPost = (user, data) => (
+  axios.post(`${apiUrl}/tasks`, data, {
     headers: {
-      'Content-Type': 'application/json',
-      'Authorization':`Bearer ${user.token}`,
-      'data': {
-        'task': {
-          name
-        }
-      }
+      'Authorization':`Bearer ${user.token}`
     }
   })
 )
