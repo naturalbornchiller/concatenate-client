@@ -1,23 +1,22 @@
 import React, { Component } from 'react'
 import { taskShow } from '../api'
-import representChain from '../helpers/taskHelpers'
+import Chain from './Chain'
 import '../Task.scss'
 
 export default class Task extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      chains: []
+      task: {
+        name: '',
+        chains: []
+      }
     }
   }
 
   taskShow = () => (
     taskShow(this.props)
-      .then(res => {
-        console.log(res.data.chains)
-        return res
-      })
-      .then(({ data }) => this.setState({ chains: data.chains }))
+      .then(({ data }) => this.setState({ task: data.task }))
       .catch(console.error)
   )
 
@@ -34,14 +33,10 @@ export default class Task extends Component {
   render () {
     return (
       <React.Fragment>
-        { this.props.id }
-        <div>
-          <p>
-            { this.state.chains.map((chain, i) => (
-              <span key={ i }>{ representChain(chain) }</span>
-            ))}
-          </p>
-        </div>
+        { this.state.task.name }
+        { this.state.task.chains.map((data, i) => (
+          <Chain key={ i } data={ data } />
+        ))}
       </React.Fragment>
     )
   }

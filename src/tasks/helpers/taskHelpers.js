@@ -1,4 +1,4 @@
-
+import '../Task.scss'
 /**
  * Converts monthNum into String
  * 
@@ -54,7 +54,7 @@ const stringifyMonth = num => {
  */
 const stringifyHours = hours => {
   // determine what half of day
-  const suffix = hours >= 12 ? 'pm' : 'am'
+  const suffix = hours >= 12 ? 'PM' : 'AM'
 
   // shift hours
   const shifted = (hours + 11) % 12 + 1
@@ -81,23 +81,34 @@ const representChain = chain => {
   // chainStart time data
   const start = new Date(chain.dayStarted)
   const startMonth = stringifyMonth(start.getMonth())
+  const month = start.getMonth()
   const startDay = start.getDate()
-  const startHours = stringifyHours(start.getHours())
+  // const startHours = stringifyHours(start.getHours())
   // chainEnd time data
   const end = new Date(chain.lastConcat)
   const endMonth = stringifyMonth(end.getMonth())
-  const endDay = end.getDate()
-  const endHours = stringifyHours(end.getHours())
+  // const endDay = end.getDate()
+  // const endHours = stringifyHours(end.getHours())
 
   // stores representation of chain
-  let virtualChain = `${ startMonth } ${ startDay } ${ startHours } *`
+  let virtualChain = `[ ${ startMonth } ][ ${ startDay } ]`
 
   // for each day add a link to chain
-  for (let i = 0; i < chainLength; i++)
-    virtualChain += '———*'
-
-  // add end date to chain
-  virtualChain += `${ endMonth } ${ endDay } ${ endHours }`
+  for (let i = 0, j = 1; i < chainLength; i++) {
+    if (startDay - (startDay + j) >= 30
+      && (month === 3 || month === 5 ||
+          month === 8 || month === 10)) {
+      virtualChain += `=====[ ${ startMonth } ][ ${ startDay + j } ]`
+      j = 0
+    } else if (startDay - (startDay + j) >= 28
+      && month === 1) {
+      virtualChain += `=====[ ${ startMonth } ][ ${ startDay + j } ]`
+      j = 0
+    } else {
+      virtualChain += `=====[ ${ startDay + j } ]`
+      j++
+    }
+  }
 
   return virtualChain
 }

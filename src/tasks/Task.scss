@@ -1,3 +1,4 @@
+// left-hand task nav
 .task-nav {
   width: 226px;
   position: fixed;
@@ -7,6 +8,7 @@
   background: #eee;
   padding: 12px;
 
+  // input for new task
   .task-name-input {
     margin-right: 2px;
     margin-bottom: 13px;
@@ -15,12 +17,14 @@
     text-align: center;
   }
 
+  // submit button for new task
   .task-name-submit {
     cursor: pointer;
     border: 1px solid rgba(0,0,0, .2);
     border-radius: 7px;
   }
 
+  // container for links for each task
   .task-link-container {
     background: #dee3e0;
     overflow-x: hidden;
@@ -29,6 +33,7 @@
     padding-left: 12px;
   }
 
+  // link for each task
   .task-link {
     cursor: pointer;
     margin: 6px 0;
@@ -47,6 +52,7 @@
   }
 }
 
+// currently selected task
 .selected-task-container {
   background: yellow;
   width: 106%;
@@ -54,6 +60,7 @@
   margin-top: 2%;
 }
 
+// misc.
 input:focus,
 select:focus,
 textarea:focus,
