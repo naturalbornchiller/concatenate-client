@@ -6,25 +6,29 @@ export default class Chain extends Component {
     super(props)
   
     this.state = {
-      chainArr: this.props.data
+      chainArr: []
     }
   }
 
-  sameDay = (d1, d2) => (
-    d1.getFullYear() === d2.getFullYear() &&
-    d1.getMonth() === d2.getMonth() &&
-    d1.getDate() === d2.getDate()
-  )
-
-  componentDidMount() {
+  convertChainObjectToArray = () => {
     this.setState({ chainArr: createChainArray(this.props.chainObj) })
   }
 
+  componentDidMount() {
+    this.convertChainObjectToArray()
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.chainObj._id !== prevProps.chainObj._id) {
+      this.convertChainObjectToArray()
+    }
+  }
+
   render () {
-    console.log(this.props)
-    
     return (
-      <p>{ this.props.chainObj.dayStarted }</p>
+      <React.Fragment>
+        <p>{ this.state.chainArr.length }</p>
+      </React.Fragment>
     )
   }
   

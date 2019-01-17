@@ -118,17 +118,18 @@ export const representChain = chain => {
  * Create array of chainlinks from chainObject
  */
 export const createChainArray = chainObj => {
-  const { dayStarted, lastConcat } = chainObj // store start date of chain
+  const { dayStarted, lastConcat } = chainObj // store chainObj data
+  const startDay = new Date(dayStarted) // convert to Date object
   const chainArr = [] // store chainlinks
 
   // number of days passed since chain started
-  const chainLength = Math.floor((lastConcat - dayStarted) / 86400000)
+  const chainLength = 5// Math.floor((lastConcat - dayStarted) / 86400000)
   
   //
   for (let i = 0; i < chainLength; i++) {
     // get the day i-days since chain started
     const newDay = new Date()
-    newDay.set(dayStarted.getDate() + i)
+    newDay.setDate(startDay.getDate() + i)
 
     const link = {
       start: i === 0,
