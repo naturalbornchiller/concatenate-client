@@ -20,10 +20,15 @@ export default class Task extends Component {
       .catch(console.error)
   )
 
-  componentDidMount = () => {
+  componentDidMount () {
     this.taskShow()
   }
-  
+
+  componentDidUpdate (prevProps) {
+    if (this.props.id !== prevProps.id) {
+      this.taskShow()
+    }
+  }
 
   render () {
     return (
