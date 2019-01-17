@@ -1,19 +1,39 @@
 import React, { Component } from 'react'
+import { taskShow } from '../api'
 import '../Task.scss'
 
 export default class Task extends Component {
   constructor(props) {
     super(props)
     this.state = {
-       
+      chains: []
     }
-    console.log(this.props)
   }
+
+  taskShow = () => (
+    taskShow(this.props)
+      .then(res => {
+        console.log(res.data.chains)
+        return res
+      })
+      .then(({ data }) => this.setState({ chains: data.chains }))
+      .catch(console.error)
+  )
+
+  componentDidMount = () => {
+    this.taskShow()
+  }
+  
 
   render () {
     return (
       <React.Fragment>
-        { this.props.task._id }
+        { this.props.id }
+        <div>
+          { this.state.chains.map((chain, i) => (
+            <p key={ i }>{ chain.dayStarted }</p>
+          )) }
+        </div>
       </React.Fragment>
     )
   }
