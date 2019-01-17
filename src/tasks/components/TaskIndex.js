@@ -33,14 +33,18 @@ export default class TaskIndex extends Component {
           <TaskPost user={ this.props.user }  getAllTasks={ this.getAllTasks } />
           <ul className="task-link-container">
             { this.state.tasks.map((task, i) => (
-              <Link key={ i } to={`/tasks/${task._id}`}>
-                <li id={task._id} className="task-link">{task.name}</li>
-              </Link>
+              <li key={ i } id={ task._id } >
+                <Link to={`/tasks/${task._id}`} className="task-link" >
+                  { task.name.length > 16
+                    ? task.name.substr(0, 15).trim() + '...'
+                    : task.name }
+                </Link>  
+              </li>
             ))}
           </ul>
         </div>
         <div>
-          <Route path='/tasks/:id' component={Task} />
+          <Route path='/tasks/:id' component={ Task } />
         </div>
       </React.Fragment>
     )

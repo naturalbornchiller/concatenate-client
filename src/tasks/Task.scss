@@ -9,6 +9,7 @@
 
   .task-name-input {
     margin-right: 2px;
+    margin-bottom: 13px;
     border: 1px solid rgba(0,0,0,.2);
     padding: 1px;
     text-align: center;
@@ -21,24 +22,27 @@
   }
 
   .task-link-container {
-    background: rgb(144, 214, 165);
+    background: #dee3e0;
     overflow-x: hidden;
     overflow-y: auto;
-    max-height: 580px;
+    max-height: 568px;
+    padding-left: 12px;
   }
 
   .task-link {
     cursor: pointer;
-    // padding: 6px 8px 6px 16px;
     margin: 6px 0;
     font-family: "Lato", sans-serif;
-    text-decoration: none;
     font-size: 22px;
     color: #2196F3;
     display: block;
 
     &:hover {
       color: #064579;
+      text-decoration: none;
+    }
+    &:focus {
+      text-decoration: none;
     }
   }
 }
