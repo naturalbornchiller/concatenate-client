@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Day from './Day'
 import { createChainArray } from '../helpers/taskHelpers'
 
 export default class Chain extends Component {
@@ -28,6 +29,11 @@ export default class Chain extends Component {
     return (
       <React.Fragment>
         <p>{ this.state.chainArr.length }</p>
+        <div>
+          { this.state.chainArr.map((link, i) => (
+            <Day key={ i } link={ link } />
+          ))}
+        </div>
       </React.Fragment>
     )
   }
