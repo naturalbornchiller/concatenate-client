@@ -9,7 +9,6 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import TaskIndex from './tasks/components/TaskIndex'
-import Task from './tasks/components/Task'
 
 class App extends Component {
   constructor () {

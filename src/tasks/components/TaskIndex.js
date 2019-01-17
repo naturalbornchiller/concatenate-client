@@ -25,6 +25,8 @@ export default class TaskIndex extends Component {
       .catch(console.error)
   }
 
+  findSelectedTask = id => this.state.tasks.find(task => task._id === id)
+
   render() {
     return (
       <React.Fragment>
@@ -43,8 +45,11 @@ export default class TaskIndex extends Component {
             ))}
           </ul>
         </div>
-        <div>
-          <Route path='/tasks/:id' component={ Task } />
+        <div className="selected-task-container">
+          <Route path='/tasks/:id' render={ ({ match }) => (
+            <Task user={ this.props.user }
+              task={ this.findSelectedTask(match.params.id) } />
+          )} />
         </div>
       </React.Fragment>
     )

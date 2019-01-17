@@ -1,10 +1,20 @@
 import React, { Component } from 'react'
 import '../Task.scss'
 
-const Task = (props) => (
-  <div>
-    {props.match.params.id}
-  </div>
-)
+export default class Task extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+       
+    }
+    console.log(this.props)
+  }
 
-export default Task
+  render () {
+    return (
+      <React.Fragment>
+        { this.props.task._id }
+      </React.Fragment>
+    )
+  }
+}

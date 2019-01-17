@@ -47,6 +47,13 @@
   }
 }
 
+.selected-task-container {
+  background: yellow;
+  width: 106%;
+  margin-left: 7.5%;
+  margin-top: 2%;
+}
+
 input:focus,
 select:focus,
 textarea:focus,
