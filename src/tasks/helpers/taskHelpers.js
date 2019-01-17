@@ -73,7 +73,7 @@ const stringifyHours = hours => {
  * @param {String} chain.dayBroken - day chain was broken
  * @param {String} chain.lastConcat - day chain was last added to 
  */
-const representChain = chain => {
+export const representChain = chain => {
   // number of days passed since chain.dayStarted
   let chainLength = Math.floor((chain.lastConcat - chain.dayStarted) / 86400000)
   chainLength = 5
@@ -113,4 +113,37 @@ const representChain = chain => {
   return virtualChain
 }
 
-export default representChain
+
+/**
+ * Create array of chainlinks from chainObject
+ */
+export const createChainArray = chainObj => {
+  const { dayStarted, lastConcat } = chainObj // store start date of chain
+  const chainArr = [] // store chainlinks
+
+  // number of days passed since chain started
+  const chainLength = Math.floor((lastConcat - dayStarted) / 86400000)
+  
+  //
+  for (let i = 0; i < chainLength; i++) {
+    // get the day i-days since chain started
+    const newDay = new Date()
+    newDay.set(dayStarted.getDate() + i)
+
+    const link = {
+      start: i === 0,
+      date: newDay,
+      lastConc: false
+    }
+
+    // if it's the last link in the chain 
+    if (i + 1 === chainLength) {
+      link.lastConc = true
+    }
+
+    // concat link to chain
+    chainArr.push(link)
+  }
+
+  return chainArr
+}

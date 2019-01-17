@@ -35,7 +35,7 @@ export default class Task extends Component {
       <React.Fragment>
         { this.state.task.name }
         { this.state.task.chains.map((data, i) => (
-          <Chain key={ i } data={ data } />
+          <Chain key={ i } chainObj={ data } />
         ))}
       </React.Fragment>
     )
