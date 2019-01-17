@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { taskShow } from '../api'
+import representChain from '../helpers/taskHelpers'
 import '../Task.scss'
 
 export default class Task extends Component {
@@ -35,9 +36,11 @@ export default class Task extends Component {
       <React.Fragment>
         { this.props.id }
         <div>
-          { this.state.chains.map((chain, i) => (
-            <p key={ i }>{ chain.dayStarted }</p>
-          )) }
+          <p>
+            { this.state.chains.map((chain, i) => (
+              <span key={ i }>{ representChain(chain) }</span>
+            ))}
+          </p>
         </div>
       </React.Fragment>
     )

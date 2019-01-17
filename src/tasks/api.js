@@ -9,18 +9,14 @@ export const taskIndex = user => (
   })
 )
 
-export const taskShow = ({ user, id }) => {
-  console.log(user)
-  console.log(id)
-  
-  return (
-    axios.get(`${apiUrl}/tasks/${id}`, {
-      headers: {
-        'Authorization':`Bearer ${user.token}`
-      }
-    })
-  )
-}
+export const taskShow = ({ user, id }) => (
+  axios.get(`${apiUrl}/tasks/${id}`, {
+    headers: {
+      'Authorization':`Bearer ${user.token}`
+    }
+  })
+)
+
 
 export const taskPost = (user, data) => (
   axios.post(`${apiUrl}/tasks`, data, {
