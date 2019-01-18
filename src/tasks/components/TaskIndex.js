@@ -26,7 +26,7 @@ export default class TaskIndex extends Component {
   }
 
   unmountSelectedTask = () => {
-    
+
   }
 
   render() {
@@ -35,7 +35,7 @@ export default class TaskIndex extends Component {
       <React.Fragment>
         <div className="task-nav">
           <h2>Tasks</h2>
-          <TaskPost user={ this.props.user }  getAllTasks={ this.getAllTasks } />
+          <TaskPost user={ this.props.user }  taskIndex={ this.taskIndex } />
           <ul className="task-link-container">
             { this.state.tasks.map((task, i) => (
               <li key={ i } id={ task._id } >

@@ -27,7 +27,7 @@ export default class Chain extends Component {
 
   countDown = () => {
     const { lastConcat } = this.props.chainObj
-    return Math.floor(48 - ((new Date() / 86400000) - (new Date(lastConcat) / 86400000)) * 24)
+    return Math.ceil(48 - ((new Date() / 86400000) - (new Date(lastConcat) / 86400000)) * 24)
   }
 
   render () {

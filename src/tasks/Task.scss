@@ -93,12 +93,10 @@
     }
   }
 
-  .concat {
-    width: 50px;
-    height: 50px;
-    display: inline-block;
-    margin: 1px;
-    border: 1px solid rgba(0,0,0, .2);
+  .update-task,
+  .delete-task {
+    margin: 0 1px;
+    cursor: pointer;
   }
 }
 
