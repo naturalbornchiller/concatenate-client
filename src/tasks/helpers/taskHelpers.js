@@ -108,7 +108,7 @@ export const expandChainObj = chainObj => {
   const endDate = new Date(chainObj.lastConcat)
 
   // number of days passed since chain started
-  const chainLength = 5// Math.floor((lastConcat - dayStarted) / 86400000)
+  const chainLength = 32// Math.floor((lastConcat - dayStarted) / 86400000)
   
   for (let i = 0; i < chainLength; i++) {
     // get the day i-days since chain started

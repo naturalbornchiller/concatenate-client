@@ -4,26 +4,26 @@ import { parseDate, stringMonths } from '../helpers/taskHelpers'
 const Day = props => {
   const { date, start, lastConc, dayBroken } = props.link
   const dateObj = new Date(date)
-  let linkType = 'regular-link'
+  let linkType = 'link-regular'
   let month = ''
 
   if (start) {
-    linkType = 'start-link'
+    linkType = 'link-start'
     month = stringMonths[dateObj.getMonth()]
   } else if (lastConc) {
-    linkType = 'end-link'
+    linkType = 'link-end'
     month = stringMonths[dateObj.getMonth()]
 
     // if day is broken, link is 'terminal'
     if (dayBroken) {
-      linkType = 'terminal-link'
+      linkType = 'link-terminal'
     }
   }
 
   return (
-    <div className={ `tooltip ${linkType}` }>
-      <span>{ month } { dateObj.getDate() }</span>
-      <span className="tooltiptext">${ parseDate(date) }</span>
+    <div className={ `link ${linkType}` }>
+      <span>{ dateObj.getDate() } { month }</span><br/>
+      {/* <span className="tooltiptext">${ parseDate(date) }</span> */}
     </div>
   )
 }
