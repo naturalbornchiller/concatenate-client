@@ -31,7 +31,6 @@ export default class Chain extends Component {
   }
 
   render () {
-    console.log(this.props.chainObj)
     return (
       <React.Fragment>
         <p>Chainlength: { this.state.chainArr.length }</p>

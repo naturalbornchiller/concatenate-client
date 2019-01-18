@@ -16,16 +16,18 @@ export default class TaskIndex extends Component {
 
   // called immediately after component is mounted
   componentDidMount () {
-    this.getAllTasks()
+    this.taskIndex()
   }
 
-  getAllTasks = () => {
+  taskIndex = () => {
     taskIndex(this.props.user)
       .then(({ data }) => this.setState({ tasks: [...data.tasks] }))
       .catch(console.error)
   }
 
-  // findSelectedTask = id => this.state.tasks.find(task => task._id === id)
+  unmountSelectedTask = () => {
+    
+  }
 
   render() {
     // task={ this.findSelectedTask(match.params.id) }
@@ -49,7 +51,8 @@ export default class TaskIndex extends Component {
         <div className="selected-task-container">
           <Route path='/tasks/:id' render={ ({ match }) => (
             <Task user={ this.props.user }
-              id={ match.params.id } />
+              id={ match.params.id } 
+              taskIndex={ this.taskIndex } />
           )} />
         </div>
       </React.Fragment>

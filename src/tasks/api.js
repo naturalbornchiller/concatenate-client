@@ -24,3 +24,11 @@ export const taskPost = (user, data) => (
     }
   })
 )
+
+export const taskDelete = ({ user, id }) => (
+  axios.delete(`${apiUrl}/tasks/${id}`, {
+    headers: {
+      'Authorization':`Bearer ${user.token}`
+    }
+  })
+)
