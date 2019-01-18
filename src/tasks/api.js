@@ -17,7 +17,6 @@ export const taskShow = ({ user, id }) => (
   })
 )
 
-
 export const taskPost = (user, data) => (
   axios.post(`${apiUrl}/tasks`, data, {
     headers: {
