@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:4741'
+const apiUrl = 'https://murmuring-lowlands-80865.herokuapp.com/'
 import axios from 'axios'
 
 export const taskIndex = user => (
