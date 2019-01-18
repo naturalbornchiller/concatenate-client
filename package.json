@@ -1,6 +1,6 @@
 {
   "name": "concatenate-client",
-  "homepage": "https://naturalbornchiller.github.io/concatenate-client",
+  "homepage": "https://github.io/naturalbornchiller/concatenate-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -53,12 +53,13 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "make-standard": "eslint --fix .",
-    "nag": "eslint .",
-    "deploy": "sh scripts/deploy.sh"
+    "nag": "eslint ."
   },
   "jest": {
     "collectCoverageFrom": [
