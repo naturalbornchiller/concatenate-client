@@ -33,7 +33,7 @@ export default class Task extends Component {
   render () {
     return (
       <React.Fragment>
-        { this.state.task.name }
+        <h2 className="task-header">{ this.state.task.name }</h2>
         <div className="chain-container">
           { this.state.task.chains.map((data, i) => (
             <Chain key={ i } chainObj={ data } />

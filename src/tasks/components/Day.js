@@ -6,7 +6,6 @@ const Day = props => {
   const dateObj = new Date(date)
   let linkType = 'link-regular'
   let month = ''
-
   if (start) {
     linkType = 'link-start'
     month = stringMonths[dateObj.getMonth()]
@@ -18,12 +17,14 @@ const Day = props => {
     if (dayBroken) {
       linkType = 'link-terminal'
     }
+  } else if (dateObj.getDate() === 1) {
+    month = stringMonths[dateObj.getMonth()]
   }
 
   return (
     <div className={ `link ${linkType}` }>
       <span>{ dateObj.getDate() } { month }</span><br/>
-      {/* <span className="tooltiptext">${ parseDate(date) }</span> */}
+      {/* <span className="tooltiptext">{ parseDate(date) }</span> */}
     </div>
   )
 }

@@ -54,10 +54,12 @@
 
 // container for selected task
 .selected-task-container {
-  background: yellow;
   width: 106%;
   margin-left: 7.5%;
   margin-top: 2%;
+  padding: 10px;
+
+  .tast-header {}
 
   // chain-links
   .link {
@@ -72,17 +74,31 @@
       background: white;
     }
 
-    &-start {
-      background: lightgreen;
+    &-start, &-regular {
+      background: #f0ad4e;
+      &:hover {
+        background: #ffeb3b;
+      }
     }
 
     &-end {
-      background: rgb(96, 96, 207);
+      background: #5bc0de;
+      &:hover {
+        background: #5dd1f3;
+      }
     }
 
     &-terminal {
       background: red;
     }
+  }
+
+  .concat {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    margin: 1px;
+    border: 1px solid rgba(0,0,0, .2);
   }
 }
 
