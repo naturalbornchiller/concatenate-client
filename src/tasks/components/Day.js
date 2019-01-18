@@ -1,7 +1,8 @@
 import React from 'react'
 import { parseDate, stringMonths } from '../helpers/taskHelpers'
 
-const Day = ({ date, start, lastConc, dayBroken }) => {
+const Day = props => {
+  const { date, start, lastConc, dayBroken } = props.link
   const dateObj = new Date(date)
   let linkType = 'regular-link'
   let month = ''

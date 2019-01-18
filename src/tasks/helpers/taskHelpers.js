@@ -39,8 +39,8 @@ export const parseDate = (date, displayHours = false) => {
   }
   
   // adds the rest of the date data
-  parsed += `${stringDays[dateObj.getDay()]}, ${stringMonths[dateObj.getMonth()]} ${stringMonths[dateObj.getMonth()]} ${dateObj.getFullYear()}`
-
+  parsed += `${stringDays[dateObj.getDay()]}, ${stringMonths[dateObj.getMonth()]} ${dateObj.getFullYear()}`
+  
   return parsed
 }
 
