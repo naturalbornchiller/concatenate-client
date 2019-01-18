@@ -59,7 +59,8 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "make-standard": "eslint --fix .",
-    "nag": "eslint ."
+    "nag": "eslint .",
+    "deploy": "sh scripts/deploy.sh"
   },
   "jest": {
     "collectCoverageFrom": [
