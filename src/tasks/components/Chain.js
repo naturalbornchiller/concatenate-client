@@ -28,7 +28,7 @@ export default class Chain extends Component {
   render () {
     return (
       <React.Fragment>
-        <p>{ this.state.chainArr.length }</p>
+        <p>Number of days: { this.state.chainArr.length }</p>
         <div>
           { this.state.chainArr.map((link, i) => (
             <Day key={ i } link={ link } />

@@ -1,52 +1,10 @@
 import '../Task.scss'
-/**
- * Converts monthNum into String
- * 
- * @param {Number} num - month to convert for readability
- */
-const stringifyMonth = num => {
-  let stringMonth
-  switch (num) {
-  case 0:
-    stringMonth = 'Jan'
-    break
-  case 1:
-    stringMonth = 'Feb'
-    break
-  case 2:
-    stringMonth = 'Mar'
-    break
-  case 3:
-    stringMonth = 'Apr'
-    break
-  case 4:
-    stringMonth = 'May'
-    break
-  case 5:
-    stringMonth = 'June'
-    break
-  case 6:
-    stringMonth = 'July'
-    break
-  case 7:
-    stringMonth = 'Aug'
-    break
-  case 8:
-    stringMonth = 'Sep'
-    break
-  case 9:
-    stringMonth = 'Oct'
-    break
-  case 10:
-    stringMonth = 'Nov'
-    break
-  default:
-    stringMonth = 'Dec'
-    break
-  }
-  return stringMonth
-}
 
+/*Constants*/
+const stringMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+const stringDays = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
+
+/*Functions*/
 /**
  * Converts hoursNum into readable String
  * 
@@ -63,7 +21,6 @@ const stringifyHours = hours => {
   const stringHours = shifted + suffix
   return stringHours
 }
-
 
 /**
  * Converts chainObject into it's UI representation
@@ -120,6 +77,7 @@ export const representChain = chain => {
 export const createChainArray = chainObj => {
   const { dayStarted, lastConcat } = chainObj // store chainObj data
   const startDay = new Date(dayStarted) // convert to Date object
+  const endDate = new Date(lastConcat)
   const chainArr = [] // store chainlinks
 
   // number of days passed since chain started
@@ -130,16 +88,17 @@ export const createChainArray = chainObj => {
     // get the day i-days since chain started
     const newDay = new Date()
     newDay.setDate(startDay.getDate() + i)
-
     const link = {
       start: i === 0,
-      date: newDay,
       lastConc: false
     }
 
     // if it's the last link in the chain 
     if (i + 1 === chainLength) {
       link.lastConc = true
+      link.date = endDate
+    } else {
+      link.date = newDay
     }
 
     // concat link to chain
