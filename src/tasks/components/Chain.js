@@ -27,14 +27,18 @@ export default class Chain extends Component {
 
   countDown = () => {
     const { lastConcat } = this.props.chainObj
-    return 48 - (Math.floor(new Date() - new Date(lastConcat) / 86400000) * 60)
+    return Math.floor(48 - ((new Date() / 86400000) - (new Date(lastConcat) / 86400000)) * 24)
   }
 
   render () {
+    console.log(this.props.chainObj)
     return (
       <React.Fragment>
-        <p>Current chain length: { this.state.chainArr.length }</p>
-        <p>Hours until chain breaks: { this.countDown() }</p>
+        <p>Chainlength: { this.state.chainArr.length }</p>
+        <p>
+          { !this.props.chainObj.dayBroken &&
+          ('Hours until chain breaks: ' + this.countDown()) }
+        </p>
         <div className="chain">
           { this.state.chainArr.map((link, i) => (
             <Day key={ i } link={ link } />
