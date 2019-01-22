@@ -1,4 +1,4 @@
-const apiUrl = 'https://murmuring-lowlands-80865.herokuapp.com'
+import apiUrl from '../apiConfig'
 
 export const handleErrors = res => {
   if (res.ok) {
