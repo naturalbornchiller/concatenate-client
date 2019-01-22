@@ -45,70 +45,21 @@ export const parseDate = (date, displayHours = false) => {
 }
 
 /**
- * Converts chainObject into it's UI representation
- * 
- * @param {Object} chain - chain to be represented
- * @param {String} chain.dayStarted - day chain was started
- * @param {String} chain.dayBroken - day chain was broken
- * @param {String} chain.lastConcat - day chain was last added to 
- */
-export const representChain = chain => {
-  // number of days passed since chain.dayStarted
-  let chainLength = Math.floor((chain.lastConcat - chain.dayStarted) / 86400000)
-  chainLength = 5
-
-  // chainStart time data
-  const start = new Date(chain.dayStarted)
-  const startMonth = stringifyMonth(start.getMonth())
-  const month = start.getMonth()
-  const startDay = start.getDate()
-  // const startHours = stringifyHours(start.getHours())
-  // chainEnd time data
-  const end = new Date(chain.lastConcat)
-  const endMonth = stringifyMonth(end.getMonth())
-  // const endDay = end.getDate()
-  // const endHours = stringifyHours(end.getHours())
-
-  // stores representation of chain
-  let virtualChain = `[ ${ startMonth } ][ ${ startDay } ]`
-
-  // for each day add a link to chain
-  for (let i = 0, j = 1; i < chainLength; i++) {
-    if (startDay - (startDay + j) >= 30
-      && (month === 3 || month === 5 ||
-          month === 8 || month === 10)) {
-      virtualChain += `=====[ ${ startMonth } ][ ${ startDay + j } ]`
-      j = 0
-    } else if (startDay - (startDay + j) >= 28
-      && month === 1) {
-      virtualChain += `=====[ ${ startMonth } ][ ${ startDay + j } ]`
-      j = 0
-    } else {
-      virtualChain += `=====[ ${ startDay + j } ]`
-      j++
-    }
-  }
-
-  return virtualChain
-}
-
-
-/**
  * Create array of chainlinks from chainObject
  * @param {Object} chainObj - chainObj to be expanded
- * @param {String} chain.dayStarted - day chain was started
- * @param {String} chain.dayBroken - day chain was broken
+ * @param {String} chain.dateStarted - day chain was started
+ * @param {String} chain.dateBroken - day chain was broken
  * @param {String} chain.lastConcat - day chain was last added to 
  */
 export const expandChainObj = chainObj => {
   const chainArr = [] // store chainlinks
 
   // convert to Date objects
-  const startDay = new Date(chainObj.dayStarted)
+  const startDay = new Date(chainObj.dateStarted)
   const endDate = new Date(chainObj.lastConcat)
 
   // number of days passed since chain started
-  const chainLength = 32// Math.floor((lastConcat - dayStarted) / 86400000)
+  const chainLength = 32// Math.floor((lastConcat - dateStarted) / 86400000)
   
   for (let i = 0; i < chainLength; i++) {
     // get the day i-days since chain started
@@ -117,14 +68,14 @@ export const expandChainObj = chainObj => {
     const link = {
       start: i === 0,
       lastConc: false,
-      dayBroken: false
+      dateBroken: false
     }
 
     // if it's the last link in the chain 
     if (i + 1 === chainLength) {
       // if chain is broken, store true
-      if (chainObj.dayBroken) {
-        link.dayBroken = true
+      if (chainObj.dateBroken) {
+        link.dateBroken = true
       }
 
       // last day is the last concat

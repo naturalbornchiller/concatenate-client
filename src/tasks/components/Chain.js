@@ -35,7 +35,7 @@ export default class Chain extends Component {
       <React.Fragment>
         <p>Chainlength: { this.state.chainArr.length }</p>
         <p>
-          { !this.props.chainObj.dayBroken &&
+          { !this.props.chainObj.dateBroken &&
           ('Hours until chain breaks: ' + this.countDown()) }
         </p>
         <div className="chain">

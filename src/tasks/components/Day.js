@@ -2,7 +2,7 @@ import React from 'react'
 import { parseDate, stringMonths } from '../helpers/taskHelpers'
 
 const Day = props => {
-  const { date, start, lastConc, dayBroken } = props.link
+  const { date, start, lastConc, dateBroken } = props.link
   const dateObj = new Date(date)
   let linkType = 'link-regular'
   let month = ''
@@ -14,7 +14,7 @@ const Day = props => {
     month = stringMonths[dateObj.getMonth()]
 
     // if day is broken, link is 'terminal'
-    if (dayBroken) {
+    if (dateBroken) {
       linkType = 'link-terminal'
     }
   } else if (dateObj.getDate() === 1) {
