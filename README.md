@@ -67,3 +67,8 @@ And [here](https://projects.invisionapp.com/freehand/document/MntKyKV4p 'wirefra
 ### Technologies Used
 - Backend: Node with Express.js and Mongoose
 - Frontend: HTML, SCSS, JavaScript, React
+
+### For Local Setup
+1. Fork and clone this repo
+2. Install dependencies `npm i`
+3. Wreak havoc
