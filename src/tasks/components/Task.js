@@ -11,8 +11,7 @@ export default class Task extends Component {
         name: '',
         chains: []
       },
-      taskVisible: true,
-      concatAvailable: false
+      taskVisible: true
     }
   }
 
@@ -32,7 +31,6 @@ export default class Task extends Component {
     taskShow(this.props)
       .then(({ data }) => this.setState({ task: data.task }))
       .then(() => this.setState({ taskVisible: true }))
-      .then(this.modifyChains)
       .catch(console.error)
   )
 
@@ -46,31 +44,8 @@ export default class Task extends Component {
   taskPatch = () => (
     taskPatch(this.props)
       .then(this.taskShow)
-      .then(this.modifyChains)
       .catch(console.error)
   )
-  
-  modifyChains = () => {
-    this.concatAvailability()
-  }
-
-
-  concatAvailability = () => {
-    // if the last chain is broken
-    if (this.state.task.chains[this.state.task.chains.length - 1].dateBroken) {
-      // concat is not available
-      this.setState({ concatAvailable: null })
-    // otherwise
-    } else {
-      // concat is available if it's been at least 24 hrs since the last concat
-      this.setState({ concatAvailable: new Date() - new Date(this.state.task.chains[this.state.task.chains.length - 1].lastConcat) > 86400000 })
-    }
-  }
-  
-  longestChain = () => {
-
-    return Math.max.apply(null, this.chains.map(chain => chain.chainLength))
-  }
 
   render () {
     return (
@@ -80,6 +55,19 @@ export default class Task extends Component {
         </h2>
 
         <div className="chain-container">
+          <h3>
+            { this.state.taskVisible &&
+              (this.state.task.createChainAvailable &&
+                <input className="create-chain"
+                  type="button"
+                  onClick={ this.taskPatch } 
+                  value="Create Chain!" />) ||
+               (this.state.task.concatAvailable && 
+                <input className="create-chain"
+                  type="button"
+                  onClick={ this.taskPatch } 
+                  value="Concatenate!" />) }
+          </h3>
           { this.state.taskVisible && this.state.task.chains.map((data, i) => (
             <Chain key={ i } chainObj={ data } />
           ))}
