@@ -47,21 +47,19 @@ export const parseDate = (date, displayHours = false) => {
 /**
  * Create array of chainlinks from chainObject
  * @param {Object} chainObj - chainObj to be expanded
- * @param {String} chain.dateStarted - day chain was started
- * @param {String} chain.dateBroken - day chain was broken
- * @param {String} chain.lastConcat - day chain was last added to 
+ * @param {String} chainObj.dateStarted - day chain was started
+ * @param {String} chainObj.dateBroken - day chain was broken
+ * @param {String} chainObj.lastConcat - day chain was last added to
+ * @param {Number} chainObj.length - length of the chain in days
  */
 export const expandChainObj = chainObj => {
   const chainArr = [] // store chainlinks
-
+  console.log(chainObj)
   // convert to Date objects
   const startDay = new Date(chainObj.dateStarted)
   const endDate = new Date(chainObj.lastConcat)
-
-  // number of days passed since chain started
-  const chainLength = 32// Math.floor((lastConcat - dateStarted) / 86400000)
   
-  for (let i = 0; i < chainLength; i++) {
+  for (let i = 0, len = chainObj.length; i <= len; i++) {
     // get the day i-days since chain started
     const newDay = new Date()
     newDay.setDate(startDay.getDate() + i)
@@ -70,14 +68,14 @@ export const expandChainObj = chainObj => {
       lastConc: false,
       dateBroken: false
     }
-
+    
     // if it's the last link in the chain 
-    if (i + 1 === chainLength) {
+    if (i + 1 === len) {
       // if chain is broken, store true
       if (chainObj.dateBroken) {
         link.dateBroken = true
       }
-
+      
       // last day is the last concat
       link.lastConc = true
       // stores the date of the last day
@@ -85,10 +83,11 @@ export const expandChainObj = chainObj => {
     } else {
       link.date = newDay
     }
-
+    
     // concat link to chain
     chainArr.push(link)
   }
+  console.log(chainArr)
 
   return chainArr
 }

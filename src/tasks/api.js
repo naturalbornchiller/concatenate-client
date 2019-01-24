@@ -34,7 +34,7 @@ export const taskDelete = ({ user, id }) => (
 )
 
 export const taskPatch = ({ user, id }) => (
-  axios.patch(`${apiUrl}/tasks/${id}`, {
+  axios.patch(`${apiUrl}/tasks/${id}`, {}, {
     headers: {
       'Authorization':`Bearer ${user.token}`
     }

@@ -47,42 +47,41 @@ export default class Task extends Component {
       .catch(console.error)
   )
 
+  patchTitle = () => {
+    if (this.state.task.createChainAvailable) {
+      return 'Create chain!'
+    } else if (this.state.task.concatAvailable) {
+      return 'Concat!'
+    } else {
+      return false
+    }
+  }
+
   render () {
     return (
       <React.Fragment>
-        <h2 className="task-header">
-          { this.state.taskVisible && this.state.task.name }
-        </h2>
+        { this.state.taskVisible &&
+        (<div>
+          <h2 className="task-header">
+            { this.state.task.name }
+          </h2>
 
-        <div className="chain-container">
-          <h3>
-            { this.state.taskVisible &&
-              (this.state.task.createChainAvailable &&
-                <input className="create-chain"
-                  type="button"
-                  onClick={ this.taskPatch } 
-                  value="Create Chain!" />) ||
-               (this.state.task.concatAvailable && 
-                <input className="create-chain"
-                  type="button"
-                  onClick={ this.taskPatch } 
-                  value="Concatenate!" />) }
-          </h3>
-          { this.state.taskVisible && this.state.task.chains.map((data, i) => (
-            <Chain key={ i } chainObj={ data } />
-          ))}
-        </div>
-
-        { this.state.taskVisible && this.state.concatAvailable &&
-        <input className="update-task"
-          type="button"
-          onClick={ this.taskPatch } 
-          value="Concatenate!" /> }
-
-        { this.state.taskVisible && <input className="delete-task"
-          type="button"
-          onClick={ this.taskDelete } 
-          value="Stop Tracking Task" /> }
+          <div className="chain-container">
+            { this.state.task.chains.map((data, i) => (
+              <Chain key={ i } chainObj={ data } />
+            ))}
+          </div>
+          { ((this.state.task.createChainAvailable || this.state.task.concatAvailable) &&
+              <input className="update-task"
+                type="button"
+                onClick={ this.taskPatch } 
+                value={'Create Chain!'} /> ||
+            <p className="come-back-later">Come back after the 24hrs have passed.</p>) }
+          { <input className="delete-task"
+            type="button"
+            onClick={ this.taskDelete } 
+            value="Stop Tracking Task" /> }
+        </div>)}
       </React.Fragment>
     )
   }
