@@ -76,7 +76,7 @@ export default class Task extends Component {
                 type="button"
                 onClick={ this.taskPatch } 
                 value={'Create Chain!'} /> ||
-            <p className="come-back-later">Come back after the 24hrs have passed.</p>) }
+            <p className="come-back-later">Come back after the 24hrs have passed to concatenate.</p>) }
           { <input className="delete-task"
             type="button"
             onClick={ this.taskDelete } 
