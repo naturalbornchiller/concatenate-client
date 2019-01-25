@@ -54,12 +54,11 @@ export const parseDate = (date, displayHours = false) => {
  */
 export const expandChainObj = chainObj => {
   const chainArr = [] // store chainlinks
-  console.log(chainObj)
   // convert to Date objects
   const startDay = new Date(chainObj.dateStarted)
   const endDate = new Date(chainObj.lastConcat)
   
-  for (let i = 0, len = chainObj.length; i <= len; i++) {
+  for (let i = 0, len = chainObj.length; i < len; i++) {
     // get the day i-days since chain started
     const newDay = new Date()
     newDay.setDate(startDay.getDate() + i)
@@ -87,7 +86,6 @@ export const expandChainObj = chainObj => {
     // concat link to chain
     chainArr.push(link)
   }
-  console.log(chainArr)
 
   return chainArr
 }

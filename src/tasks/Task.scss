@@ -94,6 +94,7 @@
   }
 
   .come-back-later {
+    text-align: center;
     font-size: 12px;
   }
 
@@ -101,8 +102,10 @@
   .delete-task {
     padding: 4px;
     font-size: 14px;
-    margin: 5px 10px;
     cursor: pointer;
+  }
+  .update-task {
+    margin-right: 8px;
   }
 }
 
