@@ -22,6 +22,7 @@ export default class Chain extends Component {
   }
 
   expandChain = () => {
+    console.log(this.props.chainObj)
     this.setState({ chainArr: expandChainObj(this.props.chainObj) })
   }
 
