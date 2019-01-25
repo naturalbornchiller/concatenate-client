@@ -62,7 +62,8 @@ As a user I would like to...
 - stop tracking the task
 - view data related to the task (i.e., length of current chain; combined chain length; day the task was started; etc)
 
-And [here](https://projects.invisionapp.com/freehand/document/MntKyKV4p 'wireframe') is my wireframe.
+And here is my wireframe:
+![screenshot](https://user-images.githubusercontent.com/43046847/51720167-80950880-201a-11e9-9234-23c2c3580738.png)
 
 ### Technologies Used
 - Backend: Node with Express.js and Mongoose
