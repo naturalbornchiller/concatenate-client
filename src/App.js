@@ -9,7 +9,7 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import TaskIndex from './tasks/components/TaskIndex'
-
+import Home from './home/Home'
 class App extends Component {
   constructor () {
     super()
@@ -43,6 +43,9 @@ class App extends Component {
         {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
         
         <main className="container">
+          <Route exact path='/' render={() => (
+            <Home flash={this.flash} setUser={this.setUser} />
+          )} />
           <Route path='/sign-up' render={() => (
             <SignUp flash={this.flash} setUser={this.setUser} />
           )} />
