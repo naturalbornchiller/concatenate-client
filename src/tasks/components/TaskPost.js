@@ -14,10 +14,21 @@ export default class TaskPost extends Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
-  onCreateTask = () => {
+  onCreateTask = ({ target }) => {
     taskPost(this.props.user, { task: { name: this.state.name } })
       .then(this.props.taskIndex)
-      .catch(() => console.error('error on newTask'))
+      .then(() => {
+        target.style.backgroundColor = '#66CDAA'
+        setTimeout(() => {
+          target.style.backgroundColor = 'white'
+        }, 250)
+      })
+      .catch(() => {
+        target.style.backgroundColor = 'lightcoral'
+        setTimeout(() => {
+          target.style.backgroundColor = 'white'
+        }, 250)
+      })
       .finally(() => this.setState({ name: '' }))
   }
 

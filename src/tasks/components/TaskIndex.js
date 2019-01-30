@@ -11,8 +11,6 @@ import '../Task.scss'
 const tabStyle = {
   textDecoration: 'none',
   fontSize: '15px',
-  borderTop: '1px solid rgba(0,0,0,.2)',
-  borderBottom: '1px solid rgba(0,0,0,.2)'
 }
 
 class TaskIndex extends Component {
@@ -31,7 +29,7 @@ class TaskIndex extends Component {
 
   taskIndex = () => {
     taskIndex(this.props.user)
-      .then(({ data }) => this.setState({ tasks: [...data.tasks] }))
+      .then(({ data }) => this.setState({ tasks: [...data.tasks], value: null }))
       .catch(console.error)
   }
 
@@ -47,7 +45,6 @@ class TaskIndex extends Component {
     return (
       <React.Fragment>
         <div>
-          <h2 className="task-banner">Tasks</h2>
           <TaskPost user={ this.props.user }  taskIndex={ this.taskIndex } />
           <Tabs
             value={this.state.value}
