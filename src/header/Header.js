@@ -27,7 +27,7 @@ const alwaysOptions = (
 const Header = ({ user }) => (
   <header className="main-header">
     <h1><strong>Concatenate!</strong></h1>
-    <h6>The daily habit former.</h6>
+    <h6>The daily habit builder.</h6>
     <nav>
       { user && <span>Welcome, { user.email }</span> }
       { alwaysOptions }

@@ -1,39 +1,3 @@
-// left-hand task nav
-.task-nav {
-  width: 226px;
-  display: inline-block;
-  background: #eee;
-  padding: 12px;
-
-
-  // container for links for each task
-  .task-link-container {
-    background: #dee3e0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    max-height: 568px;
-    padding-left: 12px;
-  }
-
-  // link for each task
-  .task-link {
-    cursor: pointer;
-    margin: 6px 0;
-    font-family: "Lato", sans-serif;
-    font-size: 22px;
-    color: #2196F3;
-    display: block;
-
-    &:hover {
-      color: #064579;
-      text-decoration: none;
-    }
-    &:focus {
-      text-decoration: none;
-    }
-  }
-}
-
 // container that holds the create task buttons
 .create-task-container {
   margin: 0px auto;
@@ -62,7 +26,6 @@
     width: 32px;
   }
 }
-
 
 // container for selected task
 .selected-task-container {
@@ -190,5 +153,22 @@ button:focus {
     .delete-task {
       background: #ff8985;
     }
+  }
+
+  .about-the-app {
+    h1 {
+      padding: 18px;
+      font-size: 31px;
+    }
+  }
+  .about-the-dev {
+    h2 {
+      padding: 18px;
+      font-size: 28px;
+    }
+  }
+  .about-the-dev,
+  .about-the-app {
+    text-align: center;
   }
 }
