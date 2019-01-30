@@ -35,26 +35,35 @@
 }
 
 .create-task-container {
-  margin: 8px auto;
-  width: 200px;
+  margin: 0px auto;
+  margin-top: 31px;
+  margin-bottom: 23px;
+  width: 306px;
 }
 
 // input for new task
 .task-name-input {
-  border: 1px solid rgba(0,0,0,.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 1px;
   text-align: center;
+  border-radius: 20px;
+  font-size: 25px;
 }
 
 // submit button for new task
 .task-name-submit {
-  margin-left: 1px;
   cursor: pointer;
-  border: 1px solid rgba(0,0,0, .2);
-  border-radius: 7px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 60px;
+  font-size: 21px;
+  position: relative;
+  top: -2px;
+  right: -2px;
+  width: 32px;
 }
 
 .task-banner {
+  display: none;
   text-align: center;
   padding: 10px;
 }
