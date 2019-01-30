@@ -1,10 +1,7 @@
 // left-hand task nav
 .task-nav {
   width: 226px;
-  position: fixed;
-  z-index: 1;
-  top: 116px;
-  left: 10px;
+  display: inline-block;
   background: #eee;
   padding: 12px;
 
@@ -54,10 +51,9 @@
 
 // container for selected task
 .selected-task-container {
-  width: 106%;
-  margin-left: 7.5%;
   margin-top: 2%;
   padding: 10px;
+  display: inline-block;
 
   .task-header {}
 

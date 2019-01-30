@@ -21,7 +21,7 @@ export default class Task extends Component {
   }
 
   componentDidUpdate (prevProps) {
-    // if the id of the prop changes (e.g., when a different link is clicked)
+    // hen a different link is clicked
     if (this.props.id !== prevProps.id) {
       this.taskShow() // make request for that task to the api
     }
@@ -43,7 +43,7 @@ export default class Task extends Component {
 
   taskPatch = () => (
     taskPatch(this.props)
-      .then(this.taskShow)
+      .then(() => this.taskShow())
       .catch(console.error)
   )
 
@@ -58,6 +58,12 @@ export default class Task extends Component {
   }
 
   render () {
+    let patchType
+    if (this.state.task.concatAvailable) {
+      patchType = 'Concat!'
+    } else if (this.state.task.createChainAvailable) {
+      patchType = 'Create Chain'
+    }
     return (
       <React.Fragment>
         { this.state.taskVisible &&
@@ -75,7 +81,7 @@ export default class Task extends Component {
               <input className="update-task"
                 type="button"
                 onClick={ this.taskPatch } 
-                value={'Create Chain!'} /> ||
+                value={ patchType } /> ||
             <p className="come-back-later">Come back after the { this.state.task.hoursToConcat }hrs have passed to concatenate.</p>) }
           { <input className="delete-task"
             type="button"
