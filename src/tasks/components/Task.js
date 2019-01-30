@@ -67,7 +67,7 @@ export default class Task extends Component {
     return (
       <React.Fragment>
         { this.state.taskVisible &&
-        (<div>
+        (<div className="selected-task-container">
           <h2 className="task-header">
             { this.state.task.name }
           </h2>

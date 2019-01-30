@@ -23,7 +23,7 @@ export default class TaskPost extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div className="create-task-container">
         <input
           type="text"
           className="task-name-input"
@@ -37,7 +37,7 @@ export default class TaskPost extends Component {
           type="button"
           onClick={ this.onCreateTask }
           value="+" />
-      </React.Fragment>
+      </div>
     )
   }
 }

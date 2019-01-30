@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import { Tabs, Tab } from 'react-bootstrap'
 import Task from './Task'
 import TaskPost from './TaskPost'
 import { Link, Route } from 'react-router-dom'
-import '../Task.scss'
 import { withRouter } from 'react-router-dom'
 import { taskIndex } from '../api'
+import '../Task.scss'
 
 export default class TaskIndex extends Component {
   constructor(props) {
@@ -25,35 +26,22 @@ export default class TaskIndex extends Component {
       .catch(console.error)
   }
 
-  unmountSelectedTask = () => {
-
-  }
-
   render() {
-    // task={ this.findSelectedTask(match.params.id) }
     return (
       <React.Fragment>
-        <div className="task-nav">
-          <h2>Tasks</h2>
+        <div>
+          <h2 className="task-banner">Tasks</h2>
           <TaskPost user={ this.props.user }  taskIndex={ this.taskIndex } />
-          <ul className="task-link-container">
+          <Tabs>
             { this.state.tasks.map((task, i) => (
-              <li key={ i } id={ task._id } >
-                <Link to={`/tasks/${task._id}`} className="task-link" >
-                  { task.name.length > 16
-                    ? task.name.substr(0, 15).trim() + '...'
-                    : task.name }
-                </Link>  
-              </li>
+              <Tab key={ i } eventKey={ task.name } title={ task.name } >
+                <Task user={ this.props.user }
+                  id={ task._id }
+                  data={ task }
+                  taskIndex={ this.taskIndex } />
+              </Tab>
             ))}
-          </ul>
-        </div>
-        <div className="selected-task-container">
-          <Route path='/tasks/:id' render={ ({ match }) => (
-            <Task user={ this.props.user }
-              id={ match.params.id } 
-              taskIndex={ this.taskIndex } />
-          )} />
+          </Tabs>
         </div>
       </React.Fragment>
     )

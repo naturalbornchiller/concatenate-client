@@ -5,21 +5,6 @@
   background: #eee;
   padding: 12px;
 
-  // input for new task
-  .task-name-input {
-    margin-right: 2px;
-    margin-bottom: 13px;
-    border: 1px solid rgba(0,0,0,.2);
-    padding: 1px;
-    text-align: center;
-  }
-
-  // submit button for new task
-  .task-name-submit {
-    cursor: pointer;
-    border: 1px solid rgba(0,0,0, .2);
-    border-radius: 7px;
-  }
 
   // container for links for each task
   .task-link-container {
@@ -49,13 +34,36 @@
   }
 }
 
+.create-task-container {
+  margin: 8px auto;
+  width: 200px;
+}
+
+// input for new task
+.task-name-input {
+  border: 1px solid rgba(0,0,0,.2);
+  padding: 1px;
+  text-align: center;
+}
+
+// submit button for new task
+.task-name-submit {
+  margin-left: 1px;
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0, .2);
+  border-radius: 7px;
+}
+
+.task-banner {
+  text-align: center;
+  padding: 10px;
+}
+
 // container for selected task
 .selected-task-container {
   margin-top: 2%;
   padding: 10px;
   display: inline-block;
-
-  .task-header {}
 
   // chain-links
   .link {
