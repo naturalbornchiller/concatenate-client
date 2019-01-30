@@ -129,3 +129,8 @@ textarea:focus,
 button:focus {
     outline: none;
 }
+
+::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+}
