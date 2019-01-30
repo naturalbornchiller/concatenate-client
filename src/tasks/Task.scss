@@ -145,7 +145,7 @@ button:focus {
 }
 
 // media queries
-@media screen and (max-width: 381px) {
+@media screen and (max-width: 426px) {
   .create-task-container {
     margin: 0px auto;
     margin-top: 31px;
@@ -164,17 +164,31 @@ button:focus {
     // submit button for new task
     .task-name-submit {
       cursor: pointer;
+      position: relative;
       border: 1px solid rgba(0, 0, 0, 0.2);
       border-radius: 60px;
+      width: 25px;
       font-size: 14px;
-      position: relative;
       top: -1px;
       right: -2px;
-      width: 25px;
     }
   }
 
   a.MuiTab-root-14 {
     font-size: 11px !important;
+  }
+
+  .task-header {
+    text-align: center;
+    font-size: 24px;
+  }
+
+  .selected-task-container {
+    .update-task {
+      background: rgb(250, 157, 250);
+    }
+    .delete-task {
+      background: #ff8985;
+    }
   }
 }

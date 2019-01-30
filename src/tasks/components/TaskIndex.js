@@ -64,13 +64,11 @@ class TaskIndex extends Component {
             ))}
           </Tabs>
         </div>
-        <div className="selected-task-container">
-          <Route path='/tasks/:id' render={ ({ match }) => (
-            <Task user={ this.props.user }
-              id={ match.params.id } 
-              taskIndex={ this.taskIndex } />
-          )} />
-        </div>
+        <Route path='/tasks/:id' render={ ({ match }) => (
+          <Task user={ this.props.user }
+            id={ match.params.id } 
+            taskIndex={ this.taskIndex } />
+        )} />
       </React.Fragment>
     )
   }
