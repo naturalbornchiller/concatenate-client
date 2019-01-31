@@ -166,7 +166,7 @@ button:focus {
   .about-container {
     width: 51vw;
     margin: 0 auto;
-    margin-top: 90px;
+    margin-top: 70px;
     .about-the-app {
       display: inline-block;
       text-align: center;
@@ -179,7 +179,7 @@ button:focus {
   .about-container {
     width: 65vw;
     margin: 0 auto;
-    margin-top: 80px;
+    margin-top: 10px;
     .about-the-app {
       display: inline-block;
       text-align: center;
@@ -236,31 +236,14 @@ button:focus {
   }
 
   // about
-  .about-the-app,
-  .about-the-dev {
+  .about-the-app {
     max-width: none;
     display: block;
     font-size: auto;
-    margin-top: unset;
-    margin-right: unset;
-    margin-left: unset;
-    .about-header {
-      margin-bottom: 0;
-    }
-    p {
-      font-size: unset;
-    }
-  }
-  .about-the-app {
+    margin-top: 0px;
     h1 {
-      padding: 18px;
+      padding: 14px;
       font-size: 31px;
-    }
-  }
-  .about-the-dev {
-    h2 {
-      padding: 18px;
-      font-size: 28px;
     }
   }
 }
