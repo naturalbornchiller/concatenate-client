@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-// import { Tabs, Tab } from 'react-bootstrap'
-import { Tabs, Tab, Typography } from '@material-ui/core'
-import Task from './Task'
 import TaskPost from './TaskPost'
-import { Link, Route, withRouter } from 'react-router-dom'
+import Task2 from './Task2'
 import { taskIndex } from '../api'
+import { Tabs, Tab } from '@material-ui/core'
+import { Link, Route } from 'react-router-dom'
 import '../Task.scss'
 
 
@@ -64,11 +63,14 @@ class TaskIndex extends Component {
             ))}
           </Tabs>
         </div>
-        <Route path='/tasks/:id' render={ ({ match }) => (
-          <Task user={ this.props.user }
-            id={ match.params.id } 
-            taskIndex={ this.taskIndex } />
-        )} />
+        <div id="table">
+          <Route path='/tasks/:id' render={ ({ match }) => (
+            <Task2
+              user={ this.props.user }
+              id={ match.params.id } 
+              taskIndex={ this.taskIndex } />
+          )} />
+        </div>
       </React.Fragment>
     )
   }

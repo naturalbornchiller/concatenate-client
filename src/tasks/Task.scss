@@ -1,3 +1,7 @@
+main.container {
+  width: 100%;
+}
+
 // container that holds the create task buttons
 .create-task-container {
   margin: 0px auto;
@@ -138,7 +142,7 @@ button:focus {
 @media screen and (max-width: 1196px) {
   // about
   .about-container {
-    width: 40vw;
+    width: 33vw;
     margin: 0 auto;
     margin-top: 110px;
     .about-the-app {
@@ -151,7 +155,7 @@ button:focus {
 @media screen and (max-width: 1040px) {
   // about
   .about-container {
-    width: 45vw;
+    width: 33vw;
     margin: 0 auto;
     margin-top: 100px;
     .about-the-app {
@@ -249,33 +253,3 @@ button:focus {
 }
 
 
-
-// experimental
-.pertinant-information {
-  line-height: 1.7em;
-  font-size: 1.1rem;
-}
-.developer-info-super-container {
-  display: inline-block;
-  margin: 0 auto;
-  margin-left: 8vw;
-  text-align: right;
-}
-#developer-info-container {
-  width: 37vw;
-}
-#bio {
-  padding: 22px;
-  font-size: 16px;
-}
-#bio-title {
-  margin: 20px;
-}
-.thin-border {
-  border: 1px solid rgba(0, 0, 0, .35);
-  -moz-box-shadow: 4px 4px 10px #888;  
-  -webkit-box-shadow: 4px 4px 10px #888;  
-  box-shadow:4px 4px 6px #888;
-  padding: 13px;
-  letter-spacing: .04em;
-}
