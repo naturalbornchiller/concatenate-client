@@ -61,7 +61,6 @@ class Task2 extends Component {
   )
 
   render() {
- 
     const {
       year
     } = this.state
@@ -72,7 +71,7 @@ class Task2 extends Component {
         />
         <Calendar
           year={year}
-          showWeekSeparators={ false }
+          showWeekSeparators={false}
           customClasses={this.customClasses}
         />
       </div>
