@@ -43,7 +43,9 @@ class Task2 extends Component {
   taskShow = () => (
     taskShow(this.props)
       .then(({ data }) => this.setState({ task: data.task }))
+      .then(() => this.setState({ year: moment().year() }))
       .then(this.convertChainToRangeOfDays)
+      .then(this.scrollToCalendar)
       .catch(console.error)
   )
   taskDelete = () => (
@@ -91,16 +93,33 @@ class Task2 extends Component {
     this.setState({ customClasses: classes })
   }
 
+  /* Update UI */
+  onPrevYear = () => {
+    this.setState(prevState => ({
+      year: prevState.year - 1
+    }))
+  }
+
+  onNextYear = () => {
+    this.setState(prevState => ({
+      year: prevState.year + 1
+    }))
+  }
+
+  scrollToCalendar = () => this.cal.scrollIntoView({ behavior: 'smooth' })
+  
   /* Content */
   render() {
     const {
       customClasses,
       year
     } = this.state
-    console.log(customClasses)
+
     return (
       <div id="calendar">
         <CalendarControls
+          onPrevYear={() => this.onPrevYear()}
+          onNextYear={() => this.onNextYear()}
           year={year}
         />
         <Calendar
@@ -108,6 +127,7 @@ class Task2 extends Component {
           showWeekSeparators={false}
           customClasses={customClasses}
         />
+        <div ref={cal => { this.cal = cal }} />
       </div>
     )
   }
