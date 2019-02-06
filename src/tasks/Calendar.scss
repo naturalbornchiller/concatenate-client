@@ -123,7 +123,7 @@ table.calendar td.bolder {
 
 /* Single selected day */
 table.calendar td.selected {
-  background-color: orangered;
+  background-color: cadetblue;
   color: white;
   font-weight: bold;
 }
@@ -179,3 +179,32 @@ div.calendar-controls .today {
   text-transform: uppercase;
 }
 
+table.calendar td.concat {
+  animation: concatGlow 1s infinite alternate;
+}
+
+table.calendar td.create {
+  z-index: 1;
+  animation: createGlow 1.2s infinite alternate;
+  &:hover {
+    border: 2px solid blue;
+  }
+}
+
+/* Animations */
+@keyframes concatGlow {
+  from {
+    background-color: #f48f8f;    
+  }
+  to {
+    background-color: #df1b1b;
+  }
+}
+@keyframes createGlow {
+  from {
+    background-color: rgb(101, 225, 157);
+  }
+  to {
+    background-color: rgb(14, 165, 100);
+  }
+}

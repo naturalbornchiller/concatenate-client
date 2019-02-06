@@ -20,6 +20,8 @@ class Task2 extends Component {
         chains: []
       },
       customClasses: {
+        concat: [],
+        create: [],
         'range-left': [],
         'range': [],
         'range-right': []
@@ -84,9 +86,18 @@ class Task2 extends Component {
 
     // format class object
     const classes = {
+      concat: [],
+      create: [],
       range,
       'range-left': rangeStart, 
       'range-right': rangeEnd
+    }
+
+    const today = moment().format('YYYY-MM-DD')
+    if (this.state.task.concatAvailable) {
+      classes.concat.push(today)
+    } else if (this.state.task.createChainAvailable) {
+      classes.create.push(today)
     }
 
     // set state with custom Calendar classes
@@ -115,6 +126,7 @@ class Task2 extends Component {
       year
     } = this.state
 
+    console.log(customClasses)
     return (
       <div id="calendar">
         <CalendarControls
