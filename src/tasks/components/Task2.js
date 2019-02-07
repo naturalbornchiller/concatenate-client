@@ -24,7 +24,12 @@ class Task2 extends Component {
         create: [],
         'range-left': [],
         'range': [],
-        'range-right': []
+        'range-right': [],
+        'full-range': [],
+        winter: () => null,
+        spring: () => null,
+        summer: () => null,
+        autumn: () => null
       },
       taskVisible: true
     }
@@ -111,7 +116,12 @@ class Task2 extends Component {
       create: [],
       range,
       'range-left': rangeStart, 
-      'range-right': rangeEnd
+      'range-right': rangeEnd,
+      'full-range': rangeStart.concat(range, rangeEnd),
+      winter: day => moment(day).month() === 0 || moment(day).month() === 1 || moment(day).month() === 11,
+      spring: day => moment(day).month() === 2 || moment(day).month() === 3 || moment(day).month() === 4,
+      summer: day => moment(day).month() === 5 || moment(day).month() === 6 || moment(day).month() === 7,
+      autumn: day => moment(day).month() === 8 || moment(day).month() === 9 || moment(day).month() === 10
     }
 
     const today = moment().format('YYYY-MM-DD')
