@@ -103,9 +103,10 @@ main.container {
 
   .update-task,
   .delete-task {
-    padding: 4px;
-    font-size: 14px;
     cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 4px;
   }
   .update-task {
     margin-right: 8px;

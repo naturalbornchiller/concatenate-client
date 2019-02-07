@@ -25,7 +25,8 @@ class Task2 extends Component {
         'range-left': [],
         'range': [],
         'range-right': []
-      }
+      },
+      taskVisible: true
     }
   }
 
@@ -46,19 +47,39 @@ class Task2 extends Component {
     taskShow(this.props)
       .then(({ data }) => this.setState({ task: data.task }))
       .then(() => this.setState({ year: moment().year() }))
+      .then(() => this.setState({ taskVisible: true }))
       .then(this.convertChainToRangeOfDays)
       .then(this.scrollToCalendar)
       .catch(console.error)
   )
-  taskDelete = () => (
+  taskDelete = ({ target }) => (
     taskDelete(this.props)
       .then(this.props.taskIndex)
-      .catch(console.error)
+      .then(() => this.setState({ taskVisible: false }))
+      .catch(err => {
+        console.error(err)
+        target.style.backgroundColor = 'lightcoral'
+        setTimeout(() => {
+          target.style.backgroundColor = 'white'
+        }, 250)
+      })
   )
-  taskPatch = () => (
+  taskPatch = ({ target }) => (
     taskPatch(this.props)
-      .then(() => this.taskShow())
-      .catch(console.error)
+      .then(this.taskShow)
+      .then(() => {
+        target.style.backgroundColor = '#66CDAA'
+        setTimeout(() => {
+          target.style.backgroundColor = 'white'
+        }, 250)
+      })
+      .catch(err => {
+        console.error(err)
+        target.style.backgroundColor = 'lightcoral'
+        setTimeout(() => {
+          target.style.backgroundColor = 'white'
+        }, 250)
+      })
   )
 
   /* Helpers */
@@ -121,25 +142,46 @@ class Task2 extends Component {
   
   /* Content */
   render() {
+    let patchType
+    if (this.state.task.concatAvailable) {
+      patchType = 'Concat!'
+    } else if (this.state.task.createChainAvailable) {
+      patchType = 'Create Chain'
+    }
+
     const {
       customClasses,
       year
     } = this.state
 
-    console.log(customClasses)
     return (
       <div id="calendar">
-        <CalendarControls
-          onPrevYear={() => this.onPrevYear()}
-          onNextYear={() => this.onNextYear()}
-          year={year}
-        />
-        <Calendar
-          year={year}
-          showWeekSeparators={false}
-          customClasses={customClasses}
-        />
-        <div ref={cal => { this.cal = cal }} />
+        { this.state.taskVisible &&
+          <React.Fragment>
+            <CalendarControls
+              onPrevYear={() => this.onPrevYear()}
+              onNextYear={() => this.onNextYear()}
+              year={year}
+            />
+            <Calendar
+              year={year}
+              showWeekSeparators={false}
+              customClasses={customClasses}
+            />
+            <div ref={cal => { this.cal = cal }}>
+              {/* <p><span></span></p> */}
+              { ((this.state.task.createChainAvailable || this.state.task.concatAvailable) &&
+                  <input className="update-task"
+                    type="button"
+                    onClick={ this.taskPatch } 
+                    value={ patchType } /> ||
+                <p className="come-back-later">Come back after the { this.state.task.hoursToConcat }hrs have passed to concatenate.</p>) }
+              { <input className="delete-task"
+                type="button"
+                onClick={ this.taskDelete } 
+                value="Stop Tracking Task" /> }
+            </div>
+          </React.Fragment> }
       </div>
     )
   }
