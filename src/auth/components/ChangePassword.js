@@ -22,13 +22,13 @@ class ChangePassword extends Component {
   changePassword = event => {
     event.preventDefault()
 
-    const { flash, history, user } = this.props
+    const { setFlash, history, user } = this.props
 
     changePassword(this.state, user)
       .then(handleErrors)
-      .then(() => flash(messages.changePasswordSuccess, 'flash-success'))
+      .then(() => setFlash(messages.changePasswordSuccess, 'success'))
       .then(() => history.push('/'))
-      .catch(() => flash(messages.changePasswordFailure, 'flash-error'))
+      .catch(() => setFlash(messages.changePasswordFailure, 'error'))
   }
 
   render () {

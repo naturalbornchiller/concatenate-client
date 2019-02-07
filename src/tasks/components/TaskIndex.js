@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
+import { Tabs, Tab } from '@material-ui/core'
+import { Link, Route } from 'react-router-dom'
 import TaskPost from './TaskPost'
 import Task from './Task'
 import { taskIndex } from '../api'
-import { Tabs, Tab } from '@material-ui/core'
-import { Link, Route } from 'react-router-dom'
+import messages from '../messages'
 import '../Task.scss'
 
 
@@ -27,9 +28,10 @@ class TaskIndex extends Component {
   }
 
   taskIndex = () => {
+    const { setFlash } = this.props
     taskIndex(this.props.user)
       .then(({ data }) => this.setState({ tasks: [...data.tasks], value: null }))
-      .catch(console.error)
+      .catch(() => setFlash(messages.failure, 'error'))
   }
 
   handleChange = (event, value) => {
@@ -44,7 +46,10 @@ class TaskIndex extends Component {
     return (
       <React.Fragment>
         <div>
-          <TaskPost user={ this.props.user }  taskIndex={ this.taskIndex } />
+          <TaskPost
+            user={ this.props.user }
+            taskIndex={ this.taskIndex } 
+            setFlash={ this.props.setFlash } />
           <Tabs
             value={this.state.value}
             onChange={this.handleChange}
@@ -66,9 +71,10 @@ class TaskIndex extends Component {
         <div id="table">
           <Route path='/tasks/:id' render={ ({ match }) => (
             <Task
-              user={ this.props.user }
-              id={ match.params.id } 
-              taskIndex={ this.taskIndex } />
+              user={this.props.user}
+              id={match.params.id} 
+              taskIndex={this.taskIndex}
+              setFlash={this.props.setFlash} />
           )} />
         </div>
       </React.Fragment>

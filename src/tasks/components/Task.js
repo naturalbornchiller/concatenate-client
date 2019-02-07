@@ -3,6 +3,7 @@ import { taskShow, taskDelete, taskPatch } from '../api'
 import { Calendar, CalendarControls } from 'react-yearly-calendar'
 import Moment from 'moment'
 import { extendMoment } from 'moment-range'
+import messages from '../messages'
 const moment = extendMoment(Moment)
 import '../Calendar.scss'
 import '../Task.scss'
@@ -48,28 +49,26 @@ export default class Task extends Component {
   }
 
   /* API */
-  taskShow = () => (
+  taskShow = () => {
+    const { setFlash } = this.props
     taskShow(this.props)
       .then(({ data }) => this.setState({ task: data.task }))
       .then(() => this.setState({ year: moment().year() }))
       .then(this.convertChainToRangeOfDays)
       .then(() => this.setState({ taskVisible: true }))
       .then(this.scrollToCalendar)
-      .catch(console.error)
-  )
-  taskDelete = ({ target }) => (
+      .catch(() => setFlash(messages.failure, 'error'))
+  }
+  taskDelete = ({ target }) => {
+    const { setFlash } = this.props
     taskDelete(this.props)
       .then(this.props.taskIndex)
       .then(() => this.setState({ taskVisible: false }))
-      .catch(err => {
-        console.error(err)
-        target.style.backgroundColor = 'lightcoral'
-        setTimeout(() => {
-          target.style.backgroundColor = 'white'
-        }, 250)
-      })
-  )
-  taskPatch = ({ target }) => (
+      .then(() => setFlash(messages.deleteSuccess, 'success'))
+      .catch(() => setFlash(messages.failure, 'error'))
+  }
+  taskPatch = ({ target }) => {
+    const { setFlash } = this.props
     taskPatch(this.props)
       .then(this.taskShow)
       .then(() => {
@@ -78,14 +77,26 @@ export default class Task extends Component {
           target.style.backgroundColor = 'white'
         }, 250)
       })
-      .catch(err => {
-        console.error(err)
+      .then(() => {
+        // discern updateType
+        const msg = this.state.task.concatAvailable
+          ? messages.concatChainSuccess
+          : messages.createChainSuccess
+        
+        // display successful request
+        setFlash(msg, 'success')
+      })
+      .catch(() => {
+        // flash button red
         target.style.backgroundColor = 'lightcoral'
         setTimeout(() => {
           target.style.backgroundColor = 'white'
         }, 250)
+
+        // display error on request
+        setFlash(messages.failure, 'error')
       })
-  )
+  }
 
   /* Helpers */
   convertChainToRangeOfDays = () => {

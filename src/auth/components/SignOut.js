@@ -6,10 +6,11 @@ import messages from '../messages'
 
 class SignOut extends Component {
   componentDidMount () {
-    const { flash, history, clearUser, user } = this.props
+    const { setFlash, history, clearUser, user } = this.props
 
     signOut(user)
-      .finally(() => flash(messages.signOutSuccess, 'flash-success'))
+      .then(() => setFlash(messages.signOutSuccess, 'success'))
+      .catch(() => setFlash(messages.signOutFailure, 'error'))
       .finally(() => history.push('/'))
       .finally(() => clearUser())
   }

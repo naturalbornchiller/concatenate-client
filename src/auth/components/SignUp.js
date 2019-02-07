@@ -24,7 +24,7 @@ class SignUp extends Component {
     event.preventDefault()
 
     const { email, password, passwordConfirmation} = this.state
-    const { flash, history, setUser } = this.props
+    const { setFlash, history, setUser } = this.props
 
     signUp(this.state)
       .then(handleErrors)
@@ -32,9 +32,9 @@ class SignUp extends Component {
       .then(handleErrors)
       .then(res => res.json())
       .then(res => setUser(res.user))
-      .then(() => flash(messages.signUpSuccess, 'flash-success'))
+      .then(() => setFlash(messages.signUpSuccess, 'success'))
       .then(() => history.push('/'))
-      .catch(() => flash(messages.signUpFailure, 'flash-error'))
+      .catch(() => setFlash(messages.signUpFailure, 'error'))
   }
 
   render () {
