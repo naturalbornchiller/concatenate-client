@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import TaskPost from './TaskPost'
-import Task2 from './Task2'
+import Task from './Task'
 import { taskIndex } from '../api'
 import { Tabs, Tab } from '@material-ui/core'
 import { Link, Route } from 'react-router-dom'
@@ -65,7 +65,7 @@ class TaskIndex extends Component {
         </div>
         <div id="table">
           <Route path='/tasks/:id' render={ ({ match }) => (
-            <Task2
+            <Task
               user={ this.props.user }
               id={ match.params.id } 
               taskIndex={ this.taskIndex } />
