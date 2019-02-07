@@ -117,36 +117,52 @@ table.calendar td.bolder {
   font-weight: bold;
 }
 
-/* Single selected day */
+/* Current day */
 table.calendar td.selected {
   color: white;
   font-weight: bold;
 }
 
-/* Selected range */
-table.calendar td.range {
-  background-color: rgba(255,69,0, 0.7) !important;
+/* Chains */
+table.calendar td.range,
+table.calendar td.active-range, {
   font-weight: bold;
   color: white;
 }
-
-table.calendar td.range-left {
+table.calendar td.range-left,
+table.calendar td.active-range-left {
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   overflow: hidden;
   color: white;
   font-weight: bold;
-  background: orangered !important;
 }
-
-table.calendar td.range-right {
+table.calendar td.range-right,
+table.calendar td.active-range-right {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   overflow: hidden;
   color: white;
   font-weight: bold;
+}
+
+table.calendar td.range-left,
+table.calendar td.range-right {
+  background: #b93c0dcc !important;
+}
+table.calendar td.range {
+  background-color: rgba(182, 59, 13, 0.7);
+}
+
+table.calendar td.active-range-left,
+table.calendar td.active-range-right {
   background: orangered !important;
 }
+table.calendar td.active-range, {
+  background-color: rgba(255,69,0, 0.7);
+}
+
+// inactive color: #c33500
 
 div.calendar-controls {
   margin: 5px auto;

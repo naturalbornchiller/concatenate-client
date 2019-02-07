@@ -27,10 +27,14 @@ export default class Task extends Component {
         'range': [],
         'range-right': [],
         'full-range': [],
+        'active-range': [],
+        'active-range-left': [], 
+        'active-range-right': [],
+        'active-full-range': [],
         winter: () => null,
         spring: () => null,
         summer: () => null,
-        autumn: () => null
+        autumn: () => null,
       },
       taskVisible: true
     }
@@ -101,45 +105,63 @@ export default class Task extends Component {
   /* Helpers */
   convertChainToRangeOfDays = () => {
     // store dates for which css will be applied
-    const rangeStart = [], rangeEnd = [], range = []
+    const rangeStart = [], rangeEnd = [], range = [], activeRange = [],
+      activeRangeStart = [], activeRangeEnd = []
 
     // push significant dates to arrays
-    this.state.task.chains.forEach(({ dateStarted, dateBroken, lastConcat }) => {
+    this.state.task.chains.forEach(({ dateStarted, dateBroken, lastConcat }, i) => {
       // store last day in chain
       const lastDay = dateBroken || lastConcat
 
       // create enumerable range from start to end date
       const rng = moment.range(moment(dateStarted), moment(lastDay))
 
-      // add each date to the rangeClass array
-      for (const day of rng.by('day')) {
-        range.push(day.format('YYYY-MM-DD'))
-      }
+      if (i === this.state.task.chains.length - 1 && !dateBroken) {
+        // add each date to the activeRangeClass array
+        for (const day of rng.by('day')) {
+          activeRange.push(day.format('YYYY-MM-DD'))
+        }
 
-      // add first and last days to respective arrays
-      rangeEnd.push(moment(lastDay).format('YYYY-MM-DD'))
-      rangeStart.push(moment(dateStarted).format('YYYY-MM-DD'))
+        // add first and last days to respective arrays
+        activeRangeEnd.push(moment(lastDay).format('YYYY-MM-DD'))
+        activeRangeStart.push(moment(dateStarted).format('YYYY-MM-DD'))
+      } else {
+        // add each date to the rangeClass array
+        for (const day of rng.by('day')) {
+          range.push(day.format('YYYY-MM-DD'))
+        }
+
+        // add first and last days to respective arrays
+        rangeEnd.push(moment(lastDay).format('YYYY-MM-DD'))
+        rangeStart.push(moment(dateStarted).format('YYYY-MM-DD'))
+      }
     })
+
+    // get entire ranges
+    const fullRange = rangeStart.concat(range, rangeEnd),
+      activeFullRange = activeRangeStart.concat(activeRange, activeRangeEnd)
 
     // format class object
     const classes = {
-      concat: [],
-      create: [],
+      winter: day => (moment(day).month() === 0 || moment(day).month() === 1 || moment(day).month() === 11) && fullRange.every(date => !day.isSame(date, 'day')) && activeFullRange.every(date => !day.isSame(date, 'day')),
+      spring: day => moment(day).month() === 2 || moment(day).month() === 3 || moment(day).month() === 4 && fullRange.every(date => !day.isSame(date, 'day')) && activeFullRange.every(date => !day.isSame(date, 'day')),
+      summer: day => moment(day).month() === 5 || moment(day).month() === 6 || moment(day).month() === 7 && fullRange.every(date => !day.isSame(date, 'day')) && activeFullRange.every(date => !day.isSame(date, 'day')),
+      autumn: day => moment(day).month() === 8 || moment(day).month() === 9 || moment(day).month() === 10 && fullRange.every(date => !day.isSame(date, 'day')) && activeFullRange.every(date => !day.isSame(date, 'day')),
       range,
       'range-left': rangeStart, 
       'range-right': rangeEnd,
-      'full-range': rangeStart.concat(range, rangeEnd),
-      winter: day => moment(day).month() === 0 || moment(day).month() === 1 || moment(day).month() === 11,
-      spring: day => moment(day).month() === 2 || moment(day).month() === 3 || moment(day).month() === 4,
-      summer: day => moment(day).month() === 5 || moment(day).month() === 6 || moment(day).month() === 7,
-      autumn: day => moment(day).month() === 8 || moment(day).month() === 9 || moment(day).month() === 10
+      'full-range': fullRange,
+      'active-range': activeRange,
+      'active-range-left': activeRangeStart, 
+      'active-range-right': activeRangeEnd,
+      'active-full-range': activeFullRange
     }
 
     const today = moment().format('YYYY-MM-DD')
     if (this.state.task.concatAvailable) {
-      classes.concat.push(today)
+      classes.concat = [today]
     } else if (this.state.task.createChainAvailable) {
-      classes.create.push(today)
+      classes.create = [today]
     }
 
     // set state with custom Calendar classes
