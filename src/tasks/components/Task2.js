@@ -52,8 +52,8 @@ class Task2 extends Component {
     taskShow(this.props)
       .then(({ data }) => this.setState({ task: data.task }))
       .then(() => this.setState({ year: moment().year() }))
-      .then(() => this.setState({ taskVisible: true }))
       .then(this.convertChainToRangeOfDays)
+      .then(() => this.setState({ taskVisible: true }))
       .then(this.scrollToCalendar)
       .catch(console.error)
   )
@@ -148,7 +148,11 @@ class Task2 extends Component {
     }))
   }
 
-  scrollToCalendar = () => this.cal.scrollIntoView({ behavior: 'smooth' })
+  scrollToCalendar = () => {
+    setTimeout(() => {
+      this.cal.scrollIntoView({ behavior: 'smooth' })
+    }, 300)
+  }
   
   /* Content */
   render() {
@@ -175,21 +179,24 @@ class Task2 extends Component {
             />
             <Calendar
               year={year}
-              showWeekSeparators={false}
               customClasses={customClasses}
             />
             <div ref={cal => { this.cal = cal }}>
-              {/* <p><span></span></p> */}
+              <div className="delete-task-container">
+                <i 
+                  className="material-icons delete-task"
+                  onClick={ this.taskDelete } >
+                  delete
+                </i>
+              </div>
               { ((this.state.task.createChainAvailable || this.state.task.concatAvailable) &&
-                  <input className="update-task"
-                    type="button"
-                    onClick={ this.taskPatch } 
-                    value={ patchType } /> ||
-                <p className="come-back-later">Come back after the { this.state.task.hoursToConcat }hrs have passed to concatenate.</p>) }
-              { <input className="delete-task"
-                type="button"
-                onClick={ this.taskDelete } 
-                value="Stop Tracking Task" /> }
+              <div className="update-task-container">
+                <input className="update-task"
+                  type="button"
+                  onClick={ this.taskPatch } 
+                  value={ patchType } />
+              </div> ||
+              <p className="come-back-later">Come back after the { this.state.task.hoursToConcat }hrs have passed to concatenate.</p>) }
             </div>
           </React.Fragment> }
       </div>

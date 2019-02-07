@@ -96,21 +96,31 @@ main.container {
     }
   }
 
-  .come-back-later {
-    text-align: center;
-    font-size: 12px;
-  }
+}
+.come-back-later {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 12px;
+}
 
-  .update-task,
-  .delete-task {
-    cursor: pointer;
-    font-size: 14px;
-    border-radius: 5px;
-    padding: 4px;
+.delete-task-container {
+  width: 24px;
+  margin-left: auto;
+}
+.update-task {
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 4px;
+}
+.delete-task {
+  cursor: pointer;
+  &:hover {
+    color: orangered;
   }
-  .update-task {
-    margin-right: 8px;
-  }
+}
+.update-task {
+  margin-right: 8px;
 }
 
 // misc.
