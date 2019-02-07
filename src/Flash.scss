@@ -1,17 +1,17 @@
 .Flash.success {
-  background-color: lightgreen;
+  background-color: rgb(139, 247, 139);
 }
 
 .Flash.warn {
-  background-color: lightsalmon;
+  background-color: rgb(245, 237, 124);
 }
 
 .Flash.error {
-  background-color: lightcoral;
+  background-color: rgb(244, 107, 107);
 }
 
 .Flash {
-  color: black;
+  color: rgb(12, 13, 38);
   position: fixed;
   top: 0;
   right: 0;

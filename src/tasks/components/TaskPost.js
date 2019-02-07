@@ -34,8 +34,11 @@ export default class TaskPost extends Component {
         }, 250)
 
         // display error message
-        const msg = this.state.name ? messages.failure : messages.emptyInput
-        setFlash(msg, 'error')
+        if (this.state.name) {
+          setFlash(messages.failure, 'error')
+        } else {
+          setFlash(messages.emptyInput, 'warn')
+        }
       })
       .finally(() => this.setState({ name: '' }))
   }
@@ -46,7 +49,7 @@ export default class TaskPost extends Component {
         <input
           type="text"
           className="task-name-input"
-          placeholder="Add a task!"
+          placeholder="Add a Task!"
           onChange={ this.onChangeInput }
           value={ this.state.name }
           name="name"
