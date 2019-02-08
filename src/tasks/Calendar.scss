@@ -224,3 +224,34 @@ table.calendar td.create {
     background-color: rgb(14, 165, 100);
   }
 }
+
+/*mobile*/
+@media screen and (max-width: 1200px) {
+  table.calendar {
+    width: 100%;
+    min-width: 235px;
+  }
+
+  table.calendar td {
+    width: calc(100% / 7 - 2px * 7 - 4px);
+    display: inline-block;
+  }
+
+  table.calendar td.week-separator {
+    display: none;
+  }
+
+  table.calendar td.month-name {
+    width: 100%;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAAXNSR0IArs4c6QAAABZJREFUCB1jYEADmzdv/o8iRA0BoIEAKngPeSAlnXcAAAAASUVORK5CYII=');
+    text-align: center;
+  }
+
+  table.calendar td.prev-month, table.calendar td.next-month {
+    border-color: transparent;
+  }
+
+  table.calendar thead {
+    display: none;
+  }
+}

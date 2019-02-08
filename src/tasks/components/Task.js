@@ -186,17 +186,6 @@ export default class Task extends Component {
       this.cal.scrollIntoView({ behavior: 'smooth' })
     }, 300)
   }
-
-  concatUnavailableMsg = () => {
-    let concatUnavailable = 'Come back after the '
-    if (this.state.task.hoursToConcat === 0) {
-      concatUnavailable += 'last hour is up '
-    } else {
-      concatUnavailable += `${this.state.task.hoursToConcat}hrs have passed `
-    }
-    concatUnavailable += 'to concatenate.'
-    return concatUnavailable
-  }
   
   /* Content */
   render() {
@@ -240,7 +229,7 @@ export default class Task extends Component {
                   onClick={ this.taskPatch } 
                   value={ patchType } />
               </div> ||
-              <p className="come-back-later">{ this.concatUnavailableMsg() }</p>) }
+              <p className="come-back-later">Come back tomorrow to concatenate</p>) }
             </div>
           </React.Fragment> }
       </div>
