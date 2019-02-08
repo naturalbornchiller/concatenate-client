@@ -103,24 +103,28 @@ main.container {
   font-size: 12px;
 }
 
-.delete-task-container {
-  width: 24px;
-  margin-left: auto;
-}
-.update-task {
-  cursor: pointer;
-  font-size: 14px;
-  border-radius: 5px;
-  padding: 4px;
-}
-.delete-task {
-  cursor: pointer;
-  &:hover {
-    color: orangered;
+// for user interactions
+.interface {
+  position: relative;
+  // for removing selected task
+  .delete-task {
+    position: absolute;
+    cursor: pointer;
+    right: 0;
+    &:hover {
+      color: orangered;
+    }
   }
-}
-.update-task {
-  margin-right: 8px;
+  // for chain concatenation/creation
+  .update-task {
+    cursor: pointer;
+    position: absolute;
+    right: 50%;
+    top: 3px;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 4px;
+  }
 }
 
 // misc.

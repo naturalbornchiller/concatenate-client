@@ -200,11 +200,7 @@ table.calendar td.concat {
 }
 
 table.calendar td.create {
-  z-index: 1;
   animation: createGlow 1.2s infinite alternate;
-  &:hover {
-    border: 2px solid blue;
-  }
 }
 
 /* Animations */

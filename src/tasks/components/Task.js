@@ -214,21 +214,17 @@ export default class Task extends Component {
               year={year}
               customClasses={customClasses}
             />
-            <div ref={cal => { this.cal = cal }}>
-              <div className="delete-task-container">
-                <i 
-                  className="material-icons delete-task"
-                  onClick={ this.taskDelete } >
-                  delete
-                </i>
-              </div>
+            <div className="interface" ref={cal => { this.cal = cal }}>
+              <i 
+                className="material-icons delete-task"
+                onClick={ this.taskDelete } >
+                delete
+              </i>
               { ((this.state.task.createChainAvailable || this.state.task.concatAvailable) &&
-              <div className="update-task-container">
-                <input className="update-task"
-                  type="button"
-                  onClick={ this.taskPatch } 
-                  value={ patchType } />
-              </div> ||
+              <input className="update-task"
+                type="button"
+                onClick={ this.taskPatch } 
+                value={ patchType } /> ||
               <p className="come-back-later">Come back tomorrow to concatenate</p>) }
             </div>
           </React.Fragment> }
