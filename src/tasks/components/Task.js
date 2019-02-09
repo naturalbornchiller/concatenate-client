@@ -26,11 +26,9 @@ export default class Task extends Component {
         'range-left': [],
         'range': [],
         'range-right': [],
-        'full-range': [],
         'active-range': [],
         'active-range-left': [], 
         'active-range-right': [],
-        'active-full-range': [],
         winter: () => null,
         spring: () => null,
         summer: () => null,
@@ -137,24 +135,18 @@ export default class Task extends Component {
       }
     })
 
-    // get entire ranges
-    const fullRange = rangeStart.concat(range, rangeEnd),
-      activeFullRange = activeRangeStart.concat(activeRange, activeRangeEnd)
-
     // format class object
     const classes = {
-      winter: day => (moment(day).month() === 0 || moment(day).month() === 1 || moment(day).month() === 11) && fullRange.every(date => !day.isSame(date, 'day')) && activeFullRange.every(date => !day.isSame(date, 'day')),
-      spring: day => moment(day).month() === 2 || moment(day).month() === 3 || moment(day).month() === 4 && fullRange.every(date => !day.isSame(date, 'day')) && activeFullRange.every(date => !day.isSame(date, 'day')),
-      summer: day => moment(day).month() === 5 || moment(day).month() === 6 || moment(day).month() === 7 && fullRange.every(date => !day.isSame(date, 'day')) && activeFullRange.every(date => !day.isSame(date, 'day')),
-      autumn: day => moment(day).month() === 8 || moment(day).month() === 9 || moment(day).month() === 10 && fullRange.every(date => !day.isSame(date, 'day')) && activeFullRange.every(date => !day.isSame(date, 'day')),
+      winter: day => (moment(day).month() === 0 || moment(day).month() === 1 || moment(day).month() === 11) && range.every(date => !day.isSame(date, 'day')) && activeRange.every(date => !day.isSame(date, 'day')),
+      spring: day => moment(day).month() === 2 || moment(day).month() === 3 || moment(day).month() === 4 && range.every(date => !day.isSame(date, 'day')) && activeRange.every(date => !day.isSame(date, 'day')),
+      summer: day => moment(day).month() === 5 || moment(day).month() === 6 || moment(day).month() === 7 && range.every(date => !day.isSame(date, 'day')) && activeRange.every(date => !day.isSame(date, 'day')),
+      autumn: day => moment(day).month() === 8 || moment(day).month() === 9 || moment(day).month() === 10 && range.every(date => !day.isSame(date, 'day')) && activeRange.every(date => !day.isSame(date, 'day')),
       range,
       'range-left': rangeStart, 
       'range-right': rangeEnd,
-      'full-range': fullRange,
       'active-range': activeRange,
       'active-range-left': activeRangeStart, 
-      'active-range-right': activeRangeEnd,
-      'active-full-range': activeFullRange
+      'active-range-right': activeRangeEnd
     }
 
     const today = moment().format('YYYY-MM-DD')

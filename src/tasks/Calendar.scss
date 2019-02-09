@@ -196,28 +196,35 @@ div.calendar-controls .today {
 }
 
 table.calendar td.concat {
-  animation: concatGlow 1s infinite alternate;
+  animation: concatGlow 1.3s infinite alternate;
+  background-color: orangered;
+  border: 1px solid rgba(255,255,255,.1);
+  overflow: hidden;
 }
 
 table.calendar td.create {
-  animation: createGlow 1.2s infinite alternate;
+  animation: createGlow 1.3s infinite alternate;
 }
 
 /* Animations */
 @keyframes concatGlow {
   from {
-    background-color: #f48f8f;    
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
   }
   to {
-    background-color: #df1b1b;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
   }
 }
 @keyframes createGlow {
   from {
     background-color: rgb(101, 225, 157);
+    box-shadow: 0;
   }
   to {
     background-color: rgb(14, 165, 100);
+    box-shadow: inset 0 0 10px black;
   }
 }
 

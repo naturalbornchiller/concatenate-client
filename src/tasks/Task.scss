@@ -97,11 +97,6 @@ main.container {
   }
 
 }
-.come-back-later {
-  margin-top: 10px;
-  text-align: center;
-  font-size: 12px;
-}
 
 // for user interactions
 .interface {
@@ -119,11 +114,19 @@ main.container {
   .update-task {
     cursor: pointer;
     position: absolute;
-    right: 50%;
+    right: 45%;
     top: 3px;
     font-size: 14px;
     border-radius: 5px;
-    padding: 4px;
+    padding: 3px;
+    padding-right: 6px;
+    padding-left: 6px;
+  }
+  // "concatenation is unavailable" message
+  .come-back-later {
+    padding: 5px;
+    text-align: center;
+    font-size: 12px;
   }
 }
 
