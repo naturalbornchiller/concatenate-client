@@ -15,6 +15,7 @@ export default class Task extends Component {
     const today = moment()
 
     this.state = {
+      today,
       year: today.year(),
       task: {
         name: '',
@@ -161,18 +162,21 @@ export default class Task extends Component {
   }
 
   /* Update UI */
+  // go back a year
   onPrevYear = () => {
     this.setState(prevState => ({
       year: prevState.year - 1
     }))
   }
 
+  // go forward a year
   onNextYear = () => {
     this.setState(prevState => ({
       year: prevState.year + 1
     }))
   }
 
+  // scroll down to calendar
   scrollToCalendar = () => {
     setTimeout(() => {
       this.cal.scrollIntoView({ behavior: 'smooth' })
@@ -181,6 +185,7 @@ export default class Task extends Component {
   
   /* Content */
   render() {
+    // determine update-type
     let patchType
     if (this.state.task.concatAvailable) {
       patchType = 'Concat!'
@@ -188,11 +193,14 @@ export default class Task extends Component {
       patchType = 'Create Chain'
     }
 
+    // destructure state
     const {
       customClasses,
-      year
+      year,
+      today
     } = this.state
 
+    // return jsx
     return (
       <div id="calendar">
         { this.state.taskVisible &&
@@ -204,6 +212,7 @@ export default class Task extends Component {
             />
             <Calendar
               year={year}
+              selectedDay={today}
               customClasses={customClasses}
             />
             <div className="interface" ref={cal => { this.cal = cal }}>

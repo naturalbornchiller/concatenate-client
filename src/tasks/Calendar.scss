@@ -1,209 +1,221 @@
+/* Calendar */
 div#table {
   display: table;
   margin: 0 auto;
   margin-bottom: 20px;
-}
 
-table.calendar {
-  border: 3px solid #2a2a2be0;
-  border-radius: 6px;
-  border-collapse: collapse;
-}
+  div.calendar-controls {
+    margin: 5px auto;
+    display: table;
+    font-size: 25px;
+    line-height: 35px;
 
-table.calendar td.week-separator {
-  pointer-events: none;
-  padding: 0;
-  width: 8px;
-  min-width: 0;
-}
+    div {
+      display: inline;
+    }
 
-table.calendar td.winter {
-  background-color: rgba(159, 220, 249, 0.32);
-}
-table.calendar td.spring {
-  background-color: rgb(213, 252, 211);
-}
-table.calendar td.summer {
-  background-color: rgb(255, 237, 169);
-}
-table.calendar td.autumn {
-  background-color: rgb(255, 186, 183);
-}
-table.calendar td.holidays {
-  font-weight: bold;
-  color: red;
-  text-decoration: underline;
-}
-table.calendar td.weekend {
-  font-style: italic;
-  font-weight: bold;
-}
+    // year displayed in calendar controls
+    .current-year {
+      margin: 0 30px;
+    }
 
-table.calendar td.bolder {
-  font-weight: bold;
-}
+    // buttons for switching year
+    .control {
+      font-weight: bolder;
+      color: #323232;
+      font-size: 0.8em;
+      cursor: pointer;
+    }
+  }
 
-table.calendar td.winter.selected {
-  background-color: #42acde;
-  font-weight: bold;
-}
-table.calendar td.spring.selected {
-  background-color: #3bc579;
-  font-weight: bold;
-}
-table.calendar td.summer.selected {
-  background-color: #f5a43f;
-  font-weight: bold;
-}
-table.calendar td.autumn.selected {
-  background-color: #da7470;
-}
+  table.calendar {
+    border: 3px solid #2a2a2be0;
+    border-radius: 6px;
+    border-collapse: collapse;
 
-// ???????
-body {
-  background-color: white;
-  font-family: sans-serif;
-}
+    thead {
+      background: #2b2b35;
+      color: white;
+      margin-bottom: 3px;
+      border-bottom: 2px solid white;
 
-table.calendar thead {
-  background-color: #5A5A5A;
-  color: white;
-  margin-bottom: 3px;
-  border-bottom: 2px solid white
-}
+      th {
+        text-align: center;
+        font-weight: normal;
+        padding: 10px 3px;
 
-table.calendar thead th {
-  text-align: center;
-  font-weight: normal;
-  padding: 10px 3px;
-}
+        &.bolder {
+          font-weight: bold;
+        }
+      }
+    }
+    tbody {
+      font-size: .95em;
+      td {
+        cursor: pointer;
+        text-align: center;
+        border: 1px solid rgba(185, 185, 185, 0.13);
+        width: 50%;
+        padding: 8px;
 
-table.calendar thead th.bolder {
-  font-weight: bold;
-}
+        // names of the month on left of calendar
+        &.month-name {
+          font-weight: bold;
+          text-align: center;
+          cursor: default;
+          border-left: 1px solid black;
+        }
+        
+        // days from previous or next month
+        &.next-month,
+        &.prev-month {
+          color: transparent;
+          cursor: default;
+          pointer-events: none;
+        }
 
-table.calendar tbody {
-  font-size: 0.8em;
-}
+        // blank lines separating weeks
+        &.week-separator {
+          pointer-events: none;
+          padding: 0;
+          width: 8px;
+          min-width: 0;
+        }
+  
+        // seasons
+        &.winter {
+          background-color: rgba(159, 220, 249, 0.32);
+          &.selected {
+            background-color: #42acde;
+            font-weight: bold;
+          }
+        }
+        &.spring {
+          background-color: rgb(213, 252, 211);
+          &.selected {
+            background-color: #3bc579;
+            font-weight: bold;
+          }
+        }
+        &.summer {
+          background-color: rgb(255, 237, 169);
+          &.selected {
+            background-color: #f5a43f;
+            font-weight: bold;
+          }
+        }
+        &.autumn {
+          background-color: rgb(255, 186, 183);
+          &.selected {
+            background-color: #da7470;
+          }
+        }
 
-table.calendar td {
-  cursor: pointer;
-  text-align: center;
-  background-color: white;
-  border: 1px solid rgba(185, 185, 185, 0.13);
-  width: 50%;
-  padding: 8px;
-}
+        // chains
+        &.range,
+        &.active-range {
+          font-weight: bold;
+          color: white;
+        }
+        &.range-left,
+        &.active-range-left {
+          border-top-left-radius: 15px;
+          border-bottom-left-radius: 15px;
+          overflow: hidden;
+          color: white;
+          font-weight: bold;
+        }
+        &.range-right,
+        &.active-range-right {
+          border-top-right-radius: 15px;
+          border-bottom-right-radius: 15px;
+          overflow: hidden;
+          color: white;
+          font-weight: bold;
+        }
+        &.range-right,
+        &.range-left {
+          background: rgba(162, 36, 36, 0.63) !important;
+        }
+        &.range {
+          background-color: #752024;
+        }
+        &.active-range-left,
+        &.active-range-right {
+          background: orangered !important;
+        }
+        &.active-range {
+          background-color: rgba(255,69,0, 0.7);
+          overflow: hidden;
+        }
 
-table.calendar tr:last-child td {
-  border-bottom: none;
-}
+        // update effects
+        &.concat {
+          animation: concatGlow 1.3s infinite alternate;
+          border: 1px solid rgba(255,255,255,.1);
+          overflow: hidden;
+        }
+        &.create {
+          animation: createGlow 1.3s infinite alternate;
+        }        
 
-table.calendar td.month-name {
-  font-weight: bold;
-  text-align: left;
-  cursor: default;
-  border-left: none;
-}
+        // special days
+        &.holidays {
+          font-weight: bold;
+          color: red;
+          text-decoration: underline;
+        }
+        &.weekend {
+          font-style: italic;
+          font-weight: bold;
+        }
+        &.bolder {
+          font-weight: bold;
+        }
+        
+        // today
+        &.selected {
+          color: white;
+          font-weight: bold;
+        }
+      }
+    }
+  }
 
-table.calendar td.prev-month,
-table.calendar td.next-month {
-  color: transparent;
-  cursor: default;
-  pointer-events: none;
-}
-
-table.calendar td.bolder {
-  font-weight: bold;
-}
-
-/* Current day */
-table.calendar td.selected {
-  color: white;
-  font-weight: bold;
-}
-
-/* Chains */
-table.calendar td.range,
-table.calendar td.active-range, {
-  font-weight: bold;
-  color: white;
-}
-table.calendar td.range-left,
-table.calendar td.active-range-left {
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
-  overflow: hidden;
-  color: white;
-  font-weight: bold;
-}
-table.calendar td.range-right,
-table.calendar td.active-range-right {
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  overflow: hidden;
-  color: white;
-  font-weight: bold;
-}
-
-table.calendar td.range-left,
-table.calendar td.range-right {
-  background: rgba(162, 36, 36, 0.63) !important;
-}
-table.calendar td.range {
-  background-color: #752024;
-}
-
-table.calendar td.active-range-left,
-table.calendar td.active-range-right {
-  background: orangered !important;
-}
-table.calendar td.active-range, {
-  background-color: rgba(255,69,0, 0.7);
-}
-
-// inactive end-color: #b91a16
-// inactive middle-color: #810e0b
-
-div.calendar-controls {
-  margin: 5px auto;
-  display: table;
-  font-size: 25px;
-  line-height: 35px;
-}
-
-div.calendar-controls div {
-  display: inline;
-}
-
-div.calendar-controls .current-year {
-  margin: 0 30px;
-}
-
-div.calendar-controls .control {
-  font-weight: bolder;
-  color: #323232;
-  font-size: 0.8em;
-  cursor: pointer;
-}
-
-div.calendar-controls .today {
-  position: absolute;
-  right: 15px;
-  line-height: 35px;
-  font-size: 0.6em;
-  text-transform: uppercase;
-}
-
-table.calendar td.concat {
-  animation: concatGlow 1.3s infinite alternate;
-  background-color: orangered;
-  border: 1px solid rgba(255,255,255,.1);
-  overflow: hidden;
-}
-
-table.calendar td.create {
-  animation: createGlow 1.3s infinite alternate;
+  // interface for selected task
+  .interface {
+    position: relative;
+    height: 175px;
+    color: white;
+    background: #2b2b35;
+    // for removing selected task
+    .delete-task {
+      position: absolute;
+      cursor: pointer;
+      right: 0;
+      &:hover {
+        color: orangered;
+      }
+    }
+    // for chain concatenation/creation
+    .update-task {
+      cursor: pointer;
+      position: absolute;
+      right: 45%;
+      top: 3px;
+      font-size: 14px;
+      border-radius: 5px;
+      padding: 3px;
+      padding-right: 6px;
+      padding-left: 6px;
+    }
+    // "concatenation is unavailable" message
+    .come-back-later {
+      padding: 5px;
+      text-align: center;
+      font-size: 12px;
+    }
+  }
 }
 
 /* Animations */
@@ -224,7 +236,7 @@ table.calendar td.create {
   }
   to {
     background-color: rgb(14, 165, 100);
-    box-shadow: inset 0 0 10px black;
+    box-shadow: inset 0 0 5px black;
   }
 }
 

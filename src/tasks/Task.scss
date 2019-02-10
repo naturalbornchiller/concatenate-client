@@ -1,37 +1,5 @@
-main.container {
-  width: 100%;
-}
 
-// container that holds the create task buttons
-.create-task-container {
-  margin: 0px auto;
-  margin-top: 31px;
-  margin-bottom: 23px;
-  width: 306px;
-
-  // input for new task
-  .task-name-input {
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    padding: 1px;
-    text-align: center;
-    border-radius: 20px;
-    font-size: 25px;
-  }
-
-  // submit button for new task
-  .task-name-submit {
-    cursor: pointer;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 60px;
-    font-size: 21px;
-    position: relative;
-    top: -2px;
-    right: -2px;
-    width: 32px;
-  }
-}
-
-// home
+/**** About Page ****/
 .about-container {
   width: 38vw;
   margin: 0 auto;
@@ -58,93 +26,38 @@ main.container {
   }
 }
 
-// container for selected task
-.selected-task-container {
-  margin-top: 2%;
-  padding: 10px;
-  display: inline-block;
+/**** Task Page ****/
+/* Create Task */
+.create-task-container {
+  margin: 0px auto;
+  margin-top: 31px;
+  margin-bottom: 23px;
+  width: 306px;
 
-  // chain-links
-  .link {
-    width: 50px;
-    height: 50px;
-    display: inline-block;
-    margin: 1px;
-    border: 1px solid rgba(0,0,0, .2);
-    font-size: 12px;
-
-    &-regular {
-      background: white;
-    }
-
-    &-start, &-regular {
-      background: #f0ad4e;
-      &:hover {
-        background: #ffeb3b;
-      }
-    }
-
-    &-end {
-      background: #5bc0de;
-      &:hover {
-        background: #5dd1f3;
-      }
-    }
-
-    &-terminal {
-      background: red;
-    }
-  }
-
-}
-
-// for user interactions
-.interface {
-  position: relative;
-  // for removing selected task
-  .delete-task {
-    position: absolute;
-    cursor: pointer;
-    right: 0;
-    &:hover {
-      color: orangered;
-    }
-  }
-  // for chain concatenation/creation
-  .update-task {
-    cursor: pointer;
-    position: absolute;
-    right: 45%;
-    top: 3px;
-    font-size: 14px;
-    border-radius: 5px;
-    padding: 3px;
-    padding-right: 6px;
-    padding-left: 6px;
-  }
-  // "concatenation is unavailable" message
-  .come-back-later {
-    padding: 5px;
+  // input for new task
+  .task-name-input {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 1px;
     text-align: center;
-    font-size: 12px;
+    border-radius: 20px;
+    font-size: 24px;
+  }
+
+  // submit button for new task
+  .task-name-submit {
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 60px;
+    font-size: 21px;
+    position: relative;
+    top: -2px;
+    right: -2px;
+    width: 34px;
   }
 }
 
-// misc.
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
-}
-
-::-webkit-scrollbar {
-  display: none !important;
-  width: 0 !important;
-}
-
+/* Material-Ui Tabs */
 .MuiTabs-root-1 {
-  border-top: 1px solid rgba(0,0,0,.2) !important;
   border-bottom: 1px solid rgba(0,0,0,.2) !important;
 }
 
@@ -154,8 +67,7 @@ button:focus {
   font-weight: bold;
 }
 
-// media queries
-
+/* Responsivity */
 @media screen and (max-width: 1196px) {
   // about
   .about-container {
@@ -269,4 +181,18 @@ button:focus {
   }
 }
 
+/* Reset default styling */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
 
+::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+}
+main.container {
+  width: 100%;
+}
