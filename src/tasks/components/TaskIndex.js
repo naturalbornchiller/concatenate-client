@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Tabs, Tab, withStyles } from '@material-ui/core'
+import { Tabs, Tab } from '@material-ui/core'
 import { Link, Route } from 'react-router-dom'
 import TaskPost from './TaskPost'
 import Task from './Task'
