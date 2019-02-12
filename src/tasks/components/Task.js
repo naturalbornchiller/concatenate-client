@@ -228,6 +228,20 @@ export default class Task extends Component {
                 type="button"
                 onClick={ this.taskPatch } 
                 value={ patchType } />
+              <table className="data-box">
+                <tbody>
+                  <tr>
+                    <td>Date started:</td>
+                    <td>{moment(this.state.task.taskStarted).format('MMMM Do, YYYY') || 'N/a'}</td>
+                  </tr>
+                  <tr>
+                    <td>Longest chain:</td>
+                    <td>{this.state.task.longestChain || 'N/a'}</td>
+                    <td>Total days:</td>
+                    <td>{this.state.task.combinedChainLength || 'N/a'}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </React.Fragment> }
       </div>

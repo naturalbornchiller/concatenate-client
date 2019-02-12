@@ -188,18 +188,32 @@ div#calendar {
     height: 62px;
     color: white;
     background: #2b2b35;
+    // display for task-related data
+    .data-box {
+      font-family: Verdana;
+      position: absolute;
+      font-size: 15px;
+      top: 4px;
+      left: 7px;
+      td {
+        padding: 1px 4px;
+        border: 1px solid rgba(170, 170, 170, 0.051);
+        &:nth-child(odd) {
+          font-weight: 550;
+        }
+      }
+    }
     // for removing selected task
     .delete-task {
       position: absolute;
       cursor: pointer;
-      right: 12px;
-      top: 9px;
-      font-size: 37px;
+      right: 16px;
+      top: 15px;
+      font-size: 27px;
       &:hover {
         color: red;
       }
     }
-
     // for chain concatenation/creation
     .update-task {
       cursor: pointer;
