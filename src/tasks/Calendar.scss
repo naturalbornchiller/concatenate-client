@@ -218,7 +218,7 @@ div#calendar {
     .update-task {
       cursor: pointer;
       position: absolute;
-      right: 45%;
+      right: 43.5%;
       top: 3px;
       display: inline-block;
       text-decoration: none;
@@ -233,6 +233,9 @@ div#calendar {
       -moz-border-radius: 5px;
       border-radius: 5px;
       text-shadow: 0px -1px 0px rgba(0,0,0,.5);
+      -webkit-transition: all .1s ease-in-out;
+      -moz-transition: all .2s ease-in-out;
+      transition: all .2s ease-in-out;
       -webkit-box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4);
       -webkit-box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5);
       -moz-box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4);
@@ -368,5 +371,11 @@ div#calendar {
 
   table.calendar thead {
     display: none;
+  }
+  .data-box {
+    display: none;
+  }
+  .update-task {
+    right: 36.5%;
   }
 }
