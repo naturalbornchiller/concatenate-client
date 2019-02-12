@@ -1,8 +1,5 @@
 main {
   display: table;
-  #table {
-    width: 1308px;
-  }
 }
 
 /**** About Page ****/
@@ -84,6 +81,9 @@ span[class*="MuiPrivateTabIndicator"] {
 
 /* Responsivity */
 @media screen and (max-width: 1196px) {
+  div[class^="MuiTabs-root"] {
+    width: 1048px;
+  }
   // about
   .about-container {
     width: 33vw;
@@ -97,6 +97,9 @@ span[class*="MuiPrivateTabIndicator"] {
   }
 }
 @media screen and (max-width: 1040px) {
+  div[class^="MuiTabs-root"] {
+    width: 950px;
+  }
   // about
   .about-container {
     width: 33vw;
@@ -111,7 +114,7 @@ span[class*="MuiPrivateTabIndicator"] {
 }
 @media screen and (max-width: 632px) {
   div[class^="MuiTabs-root"] {
-    width: 50%; // 1308px;
+    width: 508px;
   }
   // about
   .about-container {
@@ -126,6 +129,9 @@ span[class*="MuiPrivateTabIndicator"] {
   }
 }
 @media screen and (max-width: 520px) {
+  div[class^="MuiTabs-root"] {
+    width: 408px;
+  }
   // about
   .about-container {
     width: 65vw;
@@ -140,6 +146,10 @@ span[class*="MuiPrivateTabIndicator"] {
 }
 
 @media screen and (max-width: 426px) {
+  div[class^="MuiTabs-root"] {
+    width: 308px;
+    margin: 0 auto;
+  }
   // post task div
   .create-task-container {
     margin: 0px auto;
