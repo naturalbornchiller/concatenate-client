@@ -232,7 +232,7 @@ export default class Task extends Component {
                 <tbody>
                   <tr>
                     <td>Date started:</td>
-                    <td>{moment(this.state.task.taskStarted).format('MMMM Do, YYYY') || 'N/a'}</td>
+                    <td>{this.state.task.taskStarted ? moment(this.state.task.taskStarted).format('MMMM Do, YYYY') : '' || 'N/a'}</td>
                   </tr>
                   <tr>
                     <td>Longest chain:</td>

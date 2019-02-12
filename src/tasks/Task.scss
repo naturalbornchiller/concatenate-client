@@ -1,6 +1,10 @@
 main {
   display: table;
+  #table {
+    width: 1308px;
+  }
 }
+
 /**** About Page ****/
 .about-container {
   width: 38vw;
@@ -67,10 +71,16 @@ div[class*="scroller"] {
     font-weight: bold; 
   }
 }
-span[class*="MuiPrivateTabIndicator"],
+div[class^="MuiTabs-root"] {
+  width: 1308px;
+}
 span[class*="label"] {
   color: #2b2b35;
 }
+span[class*="MuiPrivateTabIndicator"] {
+  background-color: #2b2b35;
+}
+
 
 /* Responsivity */
 @media screen and (max-width: 1196px) {
@@ -100,6 +110,9 @@ span[class*="label"] {
   }
 }
 @media screen and (max-width: 632px) {
+  div[class^="MuiTabs-root"] {
+    width: 50%; // 1308px;
+  }
   // about
   .about-container {
     width: 51vw;
