@@ -185,12 +185,15 @@ export default class Task extends Component {
   
   /* Content */
   render() {
-    // determine update-type
-    let patchType
+    // determine update-type and class
+    let patchType, inactive = ''
     if (this.state.task.concatAvailable) {
       patchType = 'Concat!'
     } else if (this.state.task.createChainAvailable) {
       patchType = 'Create Chain'
+    } else {
+      patchType = (this.state.task.hoursToBreak - 24) + 'h'
+      inactive = 'inactive'
     }
 
     // destructure state
@@ -221,12 +224,10 @@ export default class Task extends Component {
                 onClick={ this.taskDelete } >
                 delete
               </i>
-              { ((this.state.task.createChainAvailable || this.state.task.concatAvailable) &&
-              <input className="update-task"
+              <input className={'update-task ' + inactive}
                 type="button"
                 onClick={ this.taskPatch } 
-                value={ patchType } /> ||
-              <p className="come-back-later">Come back tomorrow to concatenate</p>) }
+                value={ patchType } />
             </div>
           </React.Fragment> }
       </div>
