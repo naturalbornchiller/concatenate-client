@@ -6,7 +6,7 @@ ___
 Concatenate is a simple but effective way for users to
 track the repetition of tasks and form habits.
 
-![screenshot](https://user-images.githubusercontent.com/43046847/51720047-f9479500-2019-11e9-9fe7-ca4d7ae6b1b9.png)
+![screen shot 2019-02-26 at 10 52 58 am](https://user-images.githubusercontent.com/43046847/53427231-92b9ec00-39b6-11e9-9482-e10dc9ca9c68.png)
 
 ## The concept is simple:
 1. A new user ("The User") logs into our app.
